@@ -1,321 +1,486 @@
-[10/20/2026 8:27 AM] Omar Abbas: <!DOCTYPE html>
+[10/20/2026 8:45 AM] Omar Abbas: <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0c0e0c">
-<title>GYMATE | صاحبك في الجيم</title>
+
+<meta name="theme-color" content="#090b09">
+
+<title>GYMATE — Train Smarter</title>
+
 <style>
-:root {
-  --bg:#0c0e0c;
-  --card:#171b17;
-  --line:#2b332a;
-  --text:#f5f7f1;
-  --muted:#a1aa9d;
-  --lime:#c8ff45;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Tahoma,sans-serif;
-  line-height:1.6;
-}
-button,input { font:inherit; }
-button { cursor:pointer; }
-.wrap {
-  width:min(1050px,calc(100% - 28px));
-  margin:auto;
-}
-header {
-  position:sticky;
-  top:0;
-  background:#0c0e0cee;
-  border-bottom:1px solid var(--line);
-  z-index:3;
-}
-nav {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:12px;
-}
-.logo {
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.logo span {
-  background:var(--lime);
-  color:#10120c;
-  padding:5px 9px;
-  border-radius:9px;
-  margin-left:7px;
-}
-nav a {
-  color:var(--muted);
-  text-decoration:none;
-  font-size:13px;
-  margin-right:12px;
-}
-.hero {
-  padding:45px 0 28px;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:18px;
-  align-items:center;
-}
-.kicker {
-  color:var(--lime);
-  font-weight:bold;
-  font-size:12px;
-  letter-spacing:2px;
-}
-h1 {
-  font-size:clamp(40px,7vw,70px);
-  line-height:1.1;
-  margin:12px 0;
-}
-h1 span { color:var(--lime); }
-p { color:var(--muted); }
-.hero-card,.card {
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:20px;
-}
-.hero-card {
-  background:linear-gradient(145deg,#26311c,#171b17);
-}
-.big {
-  font-size:43px;
-  font-weight:900;
-  color:var(--lime);
-}
-.stats {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:15px;
-}
-.stat {
-  background:#0e110e;
-  padding:13px;
-  border-radius:12px;
-}
-.stat small {
-  display:block;
-  color:var(--muted);
-}
-.btn {
-  border:0;
-  border-radius:11px;
-  padding:11px 16px;
-  font-weight:bold;
-}
-.primary {
-  background:var(--lime);
-  color:#111;
-}
-.secondary {
-  background:#252b24;
-  color:white;
-  border:1px solid var(--line);
-}
-.section { padding:20px 0; }
-.heading {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:13px;
-}
-h2 { font-size:23px; margin:0; }
-.note { font-size:12px; color:var(--muted); }
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-.feature {
-  padding:18px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:17px;
-  transition:.2s;
-}
-.feature:hover {
-  transform:translateY(-4px);
-  border-color:#6c863f;
-}
-.feature b {
-  display:block;
-  margin:7px 0;
-}
-.feature p { font-size:13px; margin:0; }
-.split {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
-}
-label {
-  display:block;
-  color:var(--muted);
-  font-size:13px;
-  margin:10px 0 5px;
-}
-input {
-  width:100%;
-  background:#0c0f0c;
-  color:white;
-  border:1px solid #394137;
-  border-radius:10px;
-  padding:11px;
-  outline:none;
-}
-input:focus { border-color:var(--lime); }
+
+:root{--bg:#090b09;--panel:#121512;--line:#292e29;--lime:#b7ff38;--muted:#92998f;--white:#f5f7f2}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+
+button,input,select{font:inherit}
+
+a{color:inherit;text-decoration:none}
+
+.wrap{width:min(1100px,92%);margin:auto}
+
+header{height:75px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;background:#090b09ee;backdrop-filter:blur(14px);z-index:5}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+.logo{font-size:25px;font-weight:1000;letter-spacing:-1px}
+
+.logo span,.lime{color:var(--lime)}
+
+.navlinks{display:flex;gap:22px;font-size:13px;color:#c3c8bf}
+
+.hero{padding:70px 0 42px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}
+
+.kicker{color:var(--lime);font-size:11px;letter-spacing:3px;font-weight:900}
+
+h1{font-size:clamp(48px,8vw,88px);line-height:.98;letter-spacing:-4px;margin:22px 0}
+
+h1 span{color:var(--lime)}
+
+.hero p{color:var(--muted);line-height:1.9;max-width:480px}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+
+.btn{border:1px solid var(--line);padding:13px 18px;border-radius:10px;cursor:pointer;font-weight:800;display:inline-flex;justify-content:center;align-items:center;gap:8px}
+
+.primary{background:var(--lime);color:#090b09;border-color:var(--lime)}
+
+.secondary{background:#171a16;color:white}
+
+.hero-card{background:linear-gradient(145deg,#20291b,#10120f 65%);border:1px solid #38432d;border-radius:22px;padding:25px;min-height:270px;position:relative;overflow:hidden}
+
+.hero-card:after{content:"G";position:absolute;font-size:230px;font-weight:1000;color:#b7ff380c;right:5px;bottom:-75px}
+
+.big-number{font-size:72px;font-weight:1000;letter-spacing:-5px;margin:24px 0 4px}
+
+.small{font-size:12px;color:var(--muted)}
+
+.section{padding:30px 0}
+
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
+
+h2{font-size:clamp(25px,4vw,38px);margin:9px 0}
+
+.muted{color:var(--muted);font-size:13px;line-height:1.8}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:20px}
+
+.card{transition:transform .2s,border-color .2s}
+
+.card:hover{transform:translateY(-4px);border-color:#718f43}
+
+.card-icon{font-size:27px;margin-bottom:15px}
+
+.card h3{margin:0 0 8px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+label{display:block;font-size:13px;color:#d8ddd3;margin:14px 0 7px}
+
+input,select{width:100%;padding:13px;background:#090b09;color:white;border:1px solid #343a32;border-radius:10px;outline:none}
+
+input:focus,select:focus{border-color:var(--lime)}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.full{grid-column:1/-1;width:100%}
+
+form .btn{margin-top:17px}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+
+.stat{padding:16px;background:#090b09;border:1px solid var(--line);border-radius:12px}
+
+.stat strong{display:block;font-size:30px;margin:8px 0}
+
+.stat small{color:var(--muted)}
+
+.history-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+
+.history-item strong{display:block;margin-bottom:5px}
+
+.history-item small{color:var(--muted);font-size:12px;line-height:1.8}
+
+.delete{background:transparent;color:#ff8d8d;border:1px solid #503131;padding:7px 10px;border-radius:8px;cursor:pointer}
+
+.empty{padding:20px 0;color:var(--muted);font-size:13px}
+
+.
+[10/20/2026 8:45 AM] Omar Abbas: toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--lime);color:#090b09;padding:13px 20px;border-radius:12px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:10;white-space:nowrap}
+
+.toast.show{opacity:1}
+
+footer{margin-top:45px;padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+
+.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding-top:45px}.hero-card{min-height:200px}.big-number{font-size:58px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}}
+
 </style>
+
 </head>
+
 <body>
+
 <header>
-<div class="wrap">
-<nav>
-<div class="logo"><span>G</span>GYMATE</div>
-<div>
-<a href="#workout">التمرين</a>
-<a href="#progress">تطوري</a>
-<a href="#history">السجل</a>
-</div>
-</nav>
-</div>
+
+  <div class="wrap nav">
+
+    <a class="logo" href="#">GYM<span>ATE.</span></a>
+
+    <nav class="navlinks">
+
+      <a href="#workout">التمرين</a>
+
+      <a href="#progress">تقدمك</a>
+
+      <a href="#history">السجل</a>
+
+    </nav>
+
+  </div>
+
 </header>
 
 <main class="wrap">
-<section class="hero">
-<div>
-<div class="kicker">YOUR TRAINING. YOUR PROGRESS.</div>
-<h1>كل تمرينة<br><span>بتفرق.</span></h1>
-<p>نظّم تمرينك، سجّل أوزانك، وشوف تطورك خطوة بخطوة. كل حاجة محتاجها في مكان واحد.</p>
-<button class="btn primary" onclick="document.querySelector('#workout').scrollIntoView({behavior:'smooth'})">ابدأ تمرينك ↓</button>
-</div>
-<div class="hero-card">
-<div class="kicker">KEEP SHOWING UP</div>
-<h2>تقدمك بيتبني<br>تمرينة ورا تمرينة.</h2>
-<div class="big" id="sessionCount">0</div>
-<div>جلسة تمرين محفوظة</div>
-<div class="stats">
-<div class="stat"><small>آخر وزن جسم</small><b id="heroWeight">—</b></div>
-<div class="stat"><small>أيام تمرين</small><b id="heroDays">0</b></div>
-</div>
-</div>
-</section>
-[10/20/2026 8:27 AM] Omar Abbas: <section class="section">
-<div class="heading">
-<h2>أدواتك الأساسية</h2>
-<span class="note">خليك ثابت وشوف الفرق</span>
-</div>
-<div class="grid">
-<div class="feature"><span>↗</span><b>سجّل تمرينك</b><p>اكتب أوزانك واحفظ الجلسة للرجوع ليها.</p></div>
-<div class="feature"><span>⌁</span><b>راقب وزنك</b><p>سجّل القياسات وشوف التغيّر بمرور الوقت.</p></div>
-<div class="feature"><span>✓</span><b>راجع تقدمك</b><p>كل جلسة بتتحفظ في سجل تقدر تراجعه.</p></div>
-</div>
-</section>
-<p class="muted">اختار التمرين وسجّل الوزن والتكرارات اللي عملتها.</p>
 
-<form id="workoutForm">
-  <label for="exercise">التمرين</label>
-  <select id="exercise" required>
-    <option value="Bench Press">بنش برس — صدر</option>
-    <option value="Lat Pulldown">سحب أمامي — ظهر</option>
-    <option value="Shoulder Press">ضغط كتف</option>
-    <option value="Biceps Curl">بايسبس</option>
-    <option value="Leg Press">ليج برس — رجل</option>
-    <option value="Squat">سكوات</option>
-    <option value="Deadlift">ديدليفت</option>
-    <option value="Other">تمرين تاني</option>
-  </select>
+  <section class="hero">
 
-  <div class="form-grid">
     <div>
-      <label for="weightLifted">الوزن بالكيلو</label>
-      <input id="weightLifted" type="number" min="0" step="0.5" placeholder="مثلاً 40" required>
+
+      <div class="kicker">YOUR TRAINING. YOUR RULES.</div>
+
+      <h1>TRAIN<br>HARDER<span>.</span><br>GET BETTER.</h1>
+
+      <p>كل تمرينة ليها قيمة. سجّل أوزانك، تابع تقدمك، وخلّي كل جلسة تقرّبك من هدفك.</p>
+
+      <div class="actions">
+
+        <a class="btn primary" href="#workout">ابدأ تمرينك ↙</a>
+
+        <a class="btn secondary" href="#progress">تابع تقدمك</a>
+
+      </div>
+
     </div>
-    <div>
-      <label for="reps">التكرارات</label>
-      <input id="reps" type="number" min="1" max="200" placeholder="10" required>
+
+    <div class="hero-card">
+
+      <div class="kicker">BUILT BY DISCIPLINE</div>
+
+      <div class="big-number" id="heroSessions">00</div>
+
+      <strong>TRAINING SESSIONS</strong>
+
+      <p class="small">كل جلسة بتتحسب. استمر.</p>
+
     </div>
-    <div class="full">
-      <label for="sets">عدد المجموعات</label>
-      <input id="sets" type="number" min="1" max="30" value="3" required>
+
+  </section>
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <div><div class="kicker">YOUR TOOLKIT</div><h2>كل حاجة في مكان واحد<span class="lime">.</span></h2></div>
+
     </div>
-  </div>
 
-  <button class="btn primary full" type="submit">+ حفظ التمرين</button>
-</form>
-<p class="muted">سجّل وزن جسمك عشان تتابع التغيّر مع الوقت.</p>
+    <div class="grid">
 
-<form id="bodyWeightForm">
-  <label for="bodyWeight">وزن جسمك الحالي بالكيلو</label>
-  <input id="bodyWeight" type="number" min="1" max="500" step="0.1" placeholder="مثلاً 75.5" required>
-  <button class="btn primary full" type="submit">حفظ وزن الجسم</button>
-</form>
+      <div class="card"><div class="card-icon">🏋️</div><h3>سجّل تمرينك</h3><p class="muted">احفظ الوزن والتكرارات والمجموعات لكل تمرين.</p></div>
 
-<div class="stats">
-  <div class="stat">
-    <span class="muted">آخر وزن مسجّل</span>
-    <strong id="latestWeight">--</strong>
-    <small>KG</small>
-  </div>
-  <div class="stat">
-    <span class="muted">إجمالي الجلسات</span>
-    <strong id="totalSessions">0</strong>
-    <small>SESSIONS</small>
-  </div>
-</div>
+      <div class="card"><div class="card-icon">📈</div><h3>تابع تقدمك</h3><p class="muted">سجّل وزن جسمك وارجع لقياساتك السابقة.</p></div>
 
-<div class="weight-history" id="weightHistory">
-  <p class="muted">لسه مفيش أوزان مسجّلة.</p>
-</div>
+      <div class="card"><div class="card-icon">⚡</div><h3>التزم بهدفك</h3><p class="muted">راجع سجل الجلسات واعرف مدى التزامك.</p></div>
 
- </div>
-
-<section class="panel history-panel" id="history">
-  <div class="section-head">
-    <div>
-      <span class="eyebrow">03 / HISTORY</span>
-      <h2>سجل التمرين<span class="lime">.</span></h2>
     </div>
-    <button class="btn secondary" id="clearHistory" type="button">مسح السجل</button>
-  </div>
-  <div id="exerciseHistory">
-    <p class="muted">تمارينك اللي هتحفظها هتظهر هنا.</p>
-  </div>
-</section>
+
+  </section>
+
+  <section class="section split" id="workout">
+
+    <div class="panel">
+
+      <div class="kicker">01 / TRAINING LOG</div>
+
+      <h2>سجّل تمرينك<span class="lime">.</span></h2>
+
+      <p class="muted">دخل بيانات التمرين وبعدها اضغط حفظ.</p>
+
+      <form id="workoutForm">
+
+        <label for="exercise">اسم التمرين</label>
+
+        <select id="exercise" required>
+
+          <option value="بنش برس — صدر">بنش برس — صدر</option>
+
+          <option value="سحب أمامي — ظهر">سحب أمامي — ظهر</option>
+
+          <option value="ضغط كتف">ضغط كتف</option>
+
+          <option value="بايسبس">بايسبس</option>
+
+          <option value="ليج برس — رجل">ليج برس — رجل</option>
+
+          <option value="سكوات">سكوات</option>
+
+          <option value="ديدليفت">ديدليفت</option>
+
+          <option value="تمرين آخر">تمرين آخر</option>
+
+        </select>
+
+        <div class="form-grid">
+
+          <div><label for="liftWeight">الوزن بالكيلو</label><input id="liftWeight" type="number" min="0" step="0.5" placeholder="40" required></div>
+
+          <div><label for="reps">التكرارات</label><input id="reps" type="number" min="1" max="200" placeholder="10" required></div>
+
+          <div class="full"><label for="sets">عدد المجموعات</label><input id="sets" type="number" min="1" max="30" value="3" required></div>
+
+        </div>
+
+        <button class="btn primary full" type="submit">+ حفظ التمرين</button>
+
+      </form>
+
+    </div>
+
+    <div class="panel" id="progress">
+
+      <div class="kicker">02 / BODY TRACKER</div>
+
+      <h2>تقدمك<span class="lime">.</span></h2>
+
+      <p class="muted">سجّل وزن جسمك عشان تتابع التغيّر مع الوقت.</p>
+
+      <form id="bodyForm">
+[10/20/2026 8:45 AM] Omar Abbas: <label for="bodyWeight">وزن جسمك الحالي بالكيلو</label>
+
+        <input id="bodyWeight" type="number" min="1" max="500" step="0.1" placeholder="مثلاً 75.5" required>
+
+        <button class="btn primary full" type="submit">حفظ وزن الجسم</button>
+
+      </form>
+
+      <div class="stats">
+
+        <div class="stat"><span class="muted">آخر وزن</span><strong id="latestWeight">--</strong><small>KG</small></div>
+
+        <div class="stat"><span class="muted">إجمالي الجلسات</span><strong id="totalSessions">0</strong><small>SESSIONS</small></div>
+
+      </div>
+
+      <div id="weightHistory"><p class="empty">لسه مفيش أوزان مسجّلة.</p></div>
+
+    </div>
+
+  </section>
+
+  <section class="section" id="history">
+
+    <div class="panel">
+
+      <div class="section-title">
+
+        <div><div class="kicker">03 / YOUR HISTORY</div><h2>سجل التمرين<span class="lime">.</span></h2></div>
+
+        <button class="btn secondary" id="clearHistory" type="button">مسح السجل</button>
+
+      </div>
+
+      <div id="exerciseHistory"><p class="empty">التمارين اللي هتحفظها هتظهر هنا.</p></div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+
+  <div class="wrap footer-inner"><span class="logo">GYM<span>ATE.</span></span><span>BUILT FOR PROGRESS · © 2026</span></div>
+
+</footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-</main>
-get("clearHistory").addEventListener("click", function () {
 
-      if (!confirm("متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟")) return;
+<script>
 
-      data = { exercises: [], weights: [] };
+(function(){
 
-      save();
+  const KEY = "gymate-complete-v1";
 
-      render();
+  let data;
 
-      message("السجل اتمسح");
+  try {
+
+    data = JSON.parse(localStorage.getItem(KEY)) || {exercises:[],weights:[]};
+
+  } catch(e) {
+
+    data = {exercises:[],weights:[]};
+
+  }
+
+  data.exercises = Array.isArray(data.exercises) ? data.exercises : [];
+
+  data.weights = Array.isArray(data.weights) ? data.weights : [];
+
+  const $ = id => document.getElementById(id);
+
+  const save = () => localStorage.setItem(KEY,JSON.stringify(data));
+
+  function notify(text){
+
+    $("toast").textContent=text;
+
+    $("toast").classList.add("show");
+
+    setTimeout(()=>$("toast").classList.remove("show"),2200);
+
+  }
+
+  function safe(value){
+
+    return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  }
+
+  function render(){
+
+    const sessions = new Set(data.exercises.map(x=>x.session)).size;
+
+    $("totalSessions").textContent=sessions;
+
+    $("heroSessions").textContent=String(sessions).padStart(2,"0");
+
+    $("latestWeight").textContent=data.weights.length ? data.weights[data.weights.length-1].weight : "--";
+
+    $("exerciseHistory").innerHTML = data.exercises.length
+
+      ? data.exercises.slice().reverse().map(x=>`
+
+        <div class="history-item">
+
+          <div><strong>${safe(x.name)}</strong><small>${safe(x.date)} · ${x.weight} كجم × ${x.reps} تكرار × ${x.sets} مجموعات</small></div>
+
+          <button class="delete" type="button" data-ex="${x.id}">حذف</button>
+
+        </div>`).join("")
+
+      : '<p class="empty">التمارين اللي هتحفظها هتظهر هنا.</p>';
+
+    $("weightHistory").innerHTML = data.weights.length
+
+      ? data.weights.slice().reverse().slice(0,5).map(x=>`
+
+        <div class="history-item">
+
+          <div><strong>${x.weight} كجم</strong><small>${safe(x.date)}</small></div>
+
+          <button class="delete" type="button" data-wt="${x.id}">حذف</button>
+
+        </div>`).join("")
+
+      : '<p class="empty">لسه مفيش أوزان مسجّلة.</p>';
+
+  }
+
+  $("workoutForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const weight=Number($("liftWeight").value);
+
+    const reps=Number($("reps").value);
+
+    const sets=Number($("sets").value);
+
+    if(weight<0 || reps<1 || sets<1){notify("راجع الأرقام اللي دخلتها");return;}
+
+    const now=Date.now();
+
+    data.exercises.push({
+
+      id:now,name:$("exercise").value,weight,reps,sets,
+
+      date:new Date().toLocaleDateString("ar-EG"),
+
+      session:new Date().toLocaleDateString("en-CA")
 
     });
 
-  }
+    save();render();this.reset();$("sets").value=3;
+
+    notify("اتحفظ التمرين بنجاح");
+
+  });
+
+  $("bodyForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const weight=Number($("bodyWeight").value);
+[10/20/2026 8:45 AM] Omar Abbas: if(weight<=0){notify("اكتب وزن صحيح");return;}
+
+    data.weights.push({id:Date.now(),weight,date:new Date().toLocaleDateString("ar-EG")});
+
+    save();render();this.reset();notify("اتحفظ وزن جسمك");
+
+  });
+
+  document.addEventListener("click",function(e){
+
+    const ex=e.target.getAttribute("data-ex");
+
+    const wt=e.target.getAttribute("data-wt");
+
+    if(ex!==null){
+
+      data.exercises=data.exercises.filter(x=>String(x.id)!==ex);
+
+      save();render();notify("اتحذف التمرين");
+
+    }
+
+    if(wt!==null){
+
+      data.weights=data.weights.filter(x=>String(x.id)!==wt);
+
+      save();render();notify("اتحذف الوزن");
+
+    }
+
+  });
+
+  $("clearHistory").addEventListener("click",function(){
+
+    if(!confirm("متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟"))return;
+
+    data={exercises:[],weights:[]};save();render();notify("السجل اتمسح");
+
+  });
 
   render();
 
 })();
 
 </script>
+
 </body>
+
 </html>
