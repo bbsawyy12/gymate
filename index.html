@@ -222,6 +222,100 @@ input:focus { border-color:var(--lime); }
 <div class="feature"><span>✓</span><b>راجع تقدمك</b><p>كل جلسة بتتحفظ في سجل تقدر تراجعه.</p></div>
 </div>
 </section>
+<p class="muted">اختار التمرين وسجّل الوزن والتكرارات اللي عملتها.</p>
+
+<form id="workoutForm">
+  <label for="exercise">التمرين</label>
+  <select id="exercise" required>
+    <option value="Bench Press">بنش برس — صدر</option>
+    <option value="Lat Pulldown">سحب أمامي — ظهر</option>
+    <option value="Shoulder Press">ضغط كتف</option>
+    <option value="Biceps Curl">بايسبس</option>
+    <option value="Leg Press">ليج برس — رجل</option>
+    <option value="Squat">سكوات</option>
+    <option value="Deadlift">ديدليفت</option>
+    <option value="Other">تمرين تاني</option>
+  </select>
+
+  <div class="form-grid">
+    <div>
+      <label for="weightLifted">الوزن بالكيلو</label>
+      <input id="weightLifted" type="number" min="0" step="0.5" placeholder="مثلاً 40" required>
+    </div>
+    <div>
+      <label for="reps">التكرارات</label>
+      <input id="reps" type="number" min="1" max="200" placeholder="10" required>
+    </div>
+    <div class="full">
+      <label for="sets">عدد المجموعات</label>
+      <input id="sets" type="number" min="1" max="30" value="3" required>
+    </div>
+  </div>
+
+  <button class="btn primary full" type="submit">+ حفظ التمرين</button>
+</form>
+<p class="muted">سجّل وزن جسمك عشان تتابع التغيّر مع الوقت.</p>
+
+<form id="bodyWeightForm">
+  <label for="bodyWeight">وزن جسمك الحالي بالكيلو</label>
+  <input id="bodyWeight" type="number" min="1" max="500" step="0.1" placeholder="مثلاً 75.5" required>
+  <button class="btn primary full" type="submit">حفظ وزن الجسم</button>
+</form>
+
+<div class="stats">
+  <div class="stat">
+    <span class="muted">آخر وزن مسجّل</span>
+    <strong id="latestWeight">--</strong>
+    <small>KG</small>
+  </div>
+  <div class="stat">
+    <span class="muted">إجمالي الجلسات</span>
+    <strong id="totalSessions">0</strong>
+    <small>SESSIONS</small>
+  </div>
+</div>
+
+<div class="weight-history" id="weightHistory">
+  <p class="muted">لسه مفيش أوزان مسجّلة.</p>
+</div>
+
+ </div>
+
+<section class="panel history-panel" id="history">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">03 / HISTORY</span>
+      <h2>سجل التمرين<span class="lime">.</span></h2>
+    </div>
+    <button class="btn secondary" id="clearHistory" type="button">مسح السجل</button>
+  </div>
+  <div id="exerciseHistory">
+    <p class="muted">تمارينك اللي هتحفظها هتظهر هنا.</p>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 </main>
+get("clearHistory").addEventListener("click", function () {
+
+      if (!confirm("متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟")) return;
+
+      data = { exercises: [], weights: [] };
+
+      save();
+
+      render();
+
+      message("السجل اتمسح");
+
+    });
+
+  }
+
+  render();
+
+})();
+
+</script>
 </body>
 </html>
