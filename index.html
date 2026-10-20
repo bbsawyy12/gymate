@@ -1,15 +1,227 @@
-<!DOCTYPE html>
+[10/20/2026 8:27 AM] Omar Abbas: <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GYMATE Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0e0c">
+<title>GYMATE | صاحبك في الجيم</title>
+<style>
+:root {
+  --bg:#0c0e0c;
+  --card:#171b17;
+  --line:#2b332a;
+  --text:#f5f7f1;
+  --muted:#a1aa9d;
+  --lime:#c8ff45;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Tahoma,sans-serif;
+  line-height:1.6;
+}
+button,input { font:inherit; }
+button { cursor:pointer; }
+.wrap {
+  width:min(1050px,calc(100% - 28px));
+  margin:auto;
+}
+header {
+  position:sticky;
+  top:0;
+  background:#0c0e0cee;
+  border-bottom:1px solid var(--line);
+  z-index:3;
+}
+nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+  gap:12px;
+}
+.logo {
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.logo span {
+  background:var(--lime);
+  color:#10120c;
+  padding:5px 9px;
+  border-radius:9px;
+  margin-left:7px;
+}
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  margin-right:12px;
+}
+.hero {
+  padding:45px 0 28px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+  align-items:center;
+}
+.kicker {
+  color:var(--lime);
+  font-weight:bold;
+  font-size:12px;
+  letter-spacing:2px;
+}
+h1 {
+  font-size:clamp(40px,7vw,70px);
+  line-height:1.1;
+  margin:12px 0;
+}
+h1 span { color:var(--lime); }
+p { color:var(--muted); }
+.hero-card,.card {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+}
+.hero-card {
+  background:linear-gradient(145deg,#26311c,#171b17);
+}
+.big {
+  font-size:43px;
+  font-weight:900;
+  color:var(--lime);
+}
+.stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:15px;
+}
+.stat {
+  background:#0e110e;
+  padding:13px;
+  border-radius:12px;
+}
+.stat small {
+  display:block;
+  color:var(--muted);
+}
+.btn {
+  border:0;
+  border-radius:11px;
+  padding:11px 16px;
+  font-weight:bold;
+}
+.primary {
+  background:var(--lime);
+  color:#111;
+}
+.secondary {
+  background:#252b24;
+  color:white;
+  border:1px solid var(--line);
+}
+.section { padding:20px 0; }
+.heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:13px;
+}
+h2 { font-size:23px; margin:0; }
+.note { font-size:12px; color:var(--muted); }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.feature {
+  padding:18px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:17px;
+  transition:.2s;
+}
+.feature:hover {
+  transform:translateY(-4px);
+  border-color:#6c863f;
+}
+.feature b {
+  display:block;
+  margin:7px 0;
+}
+.feature p { font-size:13px; margin:0; }
+.split {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+}
+label {
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  margin:10px 0 5px;
+}
+input {
+  width:100%;
+  background:#0c0f0c;
+  color:white;
+  border:1px solid #394137;
+  border-radius:10px;
+  padding:11px;
+  outline:none;
+}
+input:focus { border-color:var(--lime); }
+</style>
 </head>
-<body style="background:#10120f;color:#c8ff45;text-align:center;font-family:Arial;padding:60px 15px">
-  <h1>GYMATE</h1>
-  <p style="color:white">يا وحش، الموقع بدأ!</p>
-  <button onclick="alert('كل حاجة شغالة!')" style="padding:12px 24px;background:#c8ff45;border:0;border-radius:8px;font-weight:bold">
-    اختبر الموقع
-  </button>
+<body>
+<header>
+<div class="wrap">
+<nav>
+<div class="logo"><span>G</span>GYMATE</div>
+<div>
+<a href="#workout">التمرين</a>
+<a href="#progress">تطوري</a>
+<a href="#history">السجل</a>
+</div>
+</nav>
+</div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="kicker">YOUR TRAINING. YOUR PROGRESS.</div>
+<h1>كل تمرينة<br><span>بتفرق.</span></h1>
+<p>نظّم تمرينك، سجّل أوزانك، وشوف تطورك خطوة بخطوة. كل حاجة محتاجها في مكان واحد.</p>
+<button class="btn primary" onclick="document.querySelector('#workout').scrollIntoView({behavior:'smooth'})">ابدأ تمرينك ↓</button>
+</div>
+<div class="hero-card">
+<div class="kicker">KEEP SHOWING UP</div>
+<h2>تقدمك بيتبني<br>تمرينة ورا تمرينة.</h2>
+<div class="big" id="sessionCount">0</div>
+<div>جلسة تمرين محفوظة</div>
+<div class="stats">
+<div class="stat"><small>آخر وزن جسم</small><b id="heroWeight">—</b></div>
+<div class="stat"><small>أيام تمرين</small><b id="heroDays">0</b></div>
+</div>
+</div>
+</section>
+[10/20/2026 8:27 AM] Omar Abbas: <section class="section">
+<div class="heading">
+<h2>أدواتك الأساسية</h2>
+<span class="note">خليك ثابت وشوف الفرق</span>
+</div>
+<div class="grid">
+<div class="feature"><span>↗</span><b>سجّل تمرينك</b><p>اكتب أوزانك واحفظ الجلسة للرجوع ليها.</p></div>
+<div class="feature"><span>⌁</span><b>راقب وزنك</b><p>سجّل القياسات وشوف التغيّر بمرور الوقت.</p></div>
+<div class="feature"><span>✓</span><b>راجع تقدمك</b><p>كل جلسة بتتحفظ في سجل تقدر تراجعه.</p></div>
+</div>
+</section>
+</main>
 </body>
 </html>
