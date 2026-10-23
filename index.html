@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -27,18 +27,19 @@ input,select{width:100%;padding:13px;background:#090b09;color:white;border:1px s
 .delete,.edit-btn{background:transparent;color:#ff8d8d;border:1px solid #503131;padding:7px 10px;border-radius:8px;cursor:pointer}.edit-btn{color:var(--lime);border-color:#43552d}.item-actions{display:flex;gap:6px;flex-shrink:0}.empty{padding:20px 0;color:var(--muted);font-size:13px}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--lime);color:#090b09;padding:13px 20px;border-radius:12px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:10;white-space:nowrap;max-width:92%;text-align:center}.toast.show{opacity:1}
 .search-row{display:grid;grid-template-columns:1fr 180px;gap:10px;margin:15px 0}.sets-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.set-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:9px;padding:7px 9px;font-size:12px;color:#dfe5d9}.set-pill input{width:16px;height:16px;accent-color:var(--lime);padding:0}
-.timer-box{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;background:#090b09;border:1px solid #38432d;border-radius:13px;padding:15px;margin-top:15px}.timer-time{font-size:30px;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums}
+.session-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.session-status{padding:15px;border:1px solid #38432d;border-radius:12px;background:#090b09;margin-top:15px}.session-status strong{color:var(--lime)}.session-list{margin-top:12px}.session-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.session-summary .stat strong{font-size:22px}.timer-box{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;background:#090b09;border:1px solid #38432d;border-radius:13px;padding:15px;margin-top:15px}.timer-time{font-size:30px;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums}
 footer{margin-top:35px;padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:700px){.hero{grid-template-columns:1fr;padding-top:38px}.hero-card{min-height:190px}.big-number{font-size:58px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}.search-row{grid-template-columns:1fr}.history-item{align-items:flex-start}.item-actions{flex-direction:column}.panel{padding:16px}}
+@media(max-width:700px){.session-summary{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr;padding-top:38px}.hero-card{min-height:190px}.big-number{font-size:58px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}.search-row{grid-template-columns:1fr}.history-item{align-items:flex-start}.item-actions{flex-direction:column}.panel{padding:16px}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="#">GYM<span>ATE.</span></a><nav class="navlinks"><a href="#workout">التمرين</a><a href="#progress">تقدمك</a><a href="#history">السجل</a></nav></div></header>
+<header><div class="wrap nav"><a class="logo" href="#">GYM<span>ATE.</span></a><nav class="navlinks"><a href="#sessions">الجلسات</a><a href="#workout">التمرين</a><a href="#progress">تقدمك</a><a href="#history">السجل</a></nav></div></header>
 <main class="wrap">
 <section class="hero"><div><div class="kicker">YOUR TRAINING. YOUR RULES.</div><h1>TRAIN<br>HARDER<span>.</span><br>GET BETTER.</h1><p>كل تمرينة ليها قيمة. سجّل أوزانك، تابع تقدمك، وخلّي كل جلسة تقرّبك من هدفك.</p><div class="actions"><a class="btn primary" href="#workout">ابدأ تمرينك ↙</a><a class="btn secondary" href="#history">راجع سجلك</a></div></div>
 <div class="hero-card"><div class="kicker">BUILT BY DISCIPLINE</div><div class="big-number" id="heroSessions">00</div><strong>TRAINING SESSIONS</strong><p class="small">كل جلسة بتتحسب. استمر.</p></div></section>
 <section class="section"><div class="section-title"><div><div class="kicker">YOUR TOOLKIT</div><h2>كل حاجة في مكان واحد<span class="lime">.</span></h2></div></div><div class="grid">
 <div class="card"><div class="card-icon">🏋️</div><h3>سجّل كل مجموعة</h3><p class="muted">تابع المجموعات المكتملة لكل تمرين.</p></div><div class="card"><div class="card-icon">📈</div><h3>تابع تقدمك</h3><p class="muted">ارجع لأوزانك السابقة وقارن أداءك.</p></div><div class="card"><div class="card-icon">⏱️</div><h3>نظّم الراحة</h3><p class="muted">مؤقت راحة بسيط بين المجموعات.</p></div></div></section>
+<section class="section" id="sessions"><div class="panel"><div class="kicker">WORKOUT MODE</div><h2>جلسة تمرينك<span class="lime">.</span></h2><p class="muted">ابدأ جلسة، وسجّل تمارينك المعتادة أثناءها. هنربط كل تمرين بالجلسة ونحسب حجم التدريب والمجموعات المكتملة.</p><div class="session-actions"><button class="btn primary" id="startSession" type="button">▶ ابدأ تمرينة جديدة</button><button class="btn danger" id="finishSession" type="button" hidden>إنهاء التمرينة</button></div><div class="session-status" id="sessionStatus">مفيش جلسة تمرين شغالة حاليًا.</div><div class="session-summary" id="sessionSummary" hidden></div><div class="session-list" id="sessionHistory"><p class="empty">الجلسات اللي هتخلصها هتظهر هنا.</p></div></div></section>
 <section class="section split" id="workout"><div class="panel"><div class="kicker">01 / TRAINING LOG</div><h2 id="formHeading">سجّل تمرينك<span class="lime">.</span></h2><p class="muted">اكتب بيانات التمرين، وبعد الحفظ علّم المجموعات اللي خلصتها.</p>
 <form id="workoutForm"><label for="exercise">اسم التمرين</label><input id="exercise" type="text" placeholder="مثلاً Bench Press" maxlength="60" required>
 <div class="form-grid"><div><label for="liftWeight">الوزن بالكيلو</label><input id="liftWeight" type="number" min="0" step="0.5" placeholder="40" required></div><div><label for="reps">التكرارات لكل مجموعة</label><input id="reps" type="number" min="1" max="200" placeholder="10" required></div><div class="full"><label for="sets">عدد المجموعات</label><input id="sets" type="number" min="1" max="30" value="3" required></div></div>
@@ -60,6 +61,8 @@ let data;
 try{data=JSON.parse(localStorage.getItem(KEY))||{exercises:[],weights:[]};}catch(e){data={exercises:[],weights:[]};}
 data.exercises=Array.isArray(data.exercises)?data.exercises:[];
 data.weights=Array.isArray(data.weights)?data.weights:[];
+data.sessions=Array.isArray(data.sessions)?data.sessions:[];
+let activeSessionId=data.activeSessionId||null;
 data.exercises.forEach(x=>{if(!Array.isArray(x.doneSets))x.doneSets=[];});
 const $=id=>document.getElementById(id);
 let editingId=null,timerSeconds=90,timerInterval=null;
@@ -68,8 +71,8 @@ function notify(text){$('toast').textContent=text;$('toast').classList.add('show
 function safe(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function sessionKey(x){return x.session||x.date||'قديم';}
 function render(){
- const sessions=new Set(data.exercises.map(sessionKey)).size;
- $('totalSessions').textContent=sessions;$('heroSessions').textContent=String(sessions).padStart(2,'0');
+ const sessionsCount=data.sessions.filter(x=>x.endedAt).length + new Set(data.exercises.filter(x=>!x.sessionId).map(sessionKey)).size;
+ $('totalSessions').textContent=sessionsCount;$('heroSessions').textContent=String(sessionsCount).padStart(2,'0');
  $('latestWeight').textContent=data.weights.length?data.weights[data.weights.length-1].weight:'--';
  const term=$('historySearch').value.trim().toLocaleLowerCase();
  const days=$('historyFilter').value;
@@ -86,7 +89,26 @@ function render(){
    return `<article class="history-item"><div style="flex:1;min-width:0"><strong>${safe(x.name)}</strong><small>${safe(x.date||'')} · ${Number(x.weight)||0} كجم × ${Number(x.reps)||0} تكرار × ${Number(x.sets)||0} مجموعات</small><div class="sets-row">${setControls}</div><small>${done.length} من ${Number(x.sets)||0} مجموعات مكتملة</small></div><div class="item-actions"><button class="edit-btn" type="button" data-edit="${safe(x.id)}">تعديل</button><button class="delete" type="button" data-delete="${safe(x.id)}">حذف</button></div></article>`;
  }).join(''):'<p class="empty">مفيش تمارين مطابقة للبحث.</p>';
  $('weightHistory').innerHTML=data.weights.length?data.weights.slice().reverse().slice(0,5).map(x=>`<div class="history-item"><div><strong>${safe(x.weight)} كجم</strong><small>${safe(x.date)}</small></div><button class="delete" type="button" data-wt="${safe(x.id)}">حذف</button></div>`).join(''):'<p class="empty">لسه مفيش أوزان مسجّلة.</p>';
+ renderSessionUI();
 }
+function currentSession(){return data.sessions.find(x=>String(x.id)===String(activeSessionId))||null;}
+function sessionExercises(id){return data.exercises.filter(x=>String(x.sessionId)===String(id));}
+function sessionVolume(items){return items.reduce((sum,x)=>sum+(Number(x.weight)||0)*(Number(x.reps)||0)*(Array.isArray(x.doneSets)?x.doneSets.length:0),0);}
+function renderSessionUI(){
+ const active=currentSession();
+ $('startSession').hidden=!!active;
+ $('finishSession').hidden=!active;
+ if(active){
+  const items=sessionExercises(active.id), completed=items.reduce((n,x)=>n+(Array.isArray(x.doneSets)?x.doneSets.length:0),0), total=items.reduce((n,x)=>n+(Number(x.sets)||0),0);
+  $('sessionStatus').innerHTML=`<strong>جلسة شغالة دلوقتي</strong><br>${safe(active.date)} · بدأت ${safe(active.startTime)}<br><span class="small">${items.length} تمارين · ${completed}/${total} مجموعة مكتملة</span>`;
+  $('sessionSummary').hidden=false;
+  $('sessionSummary').innerHTML=`<div class="stat"><span class="muted">التمارين</span><strong>${items.length}</strong></div><div class="stat"><span class="muted">المجموعات</span><strong>${completed}/${total}</strong></div><div class="stat"><span class="muted">حجم التدريب</span><strong>${Math.round(sessionVolume(items)).toLocaleString('en-US')}</strong><small>كجم × تكرار</small></div>`;
+ }else{$('sessionStatus').textContent='مفيش جلسة تمرين شغالة حاليًا. ابدأ جلسة قبل ما تبدأ تمرينك، والتمارين الجديدة هتتربط بيها تلقائيًا.';$('sessionSummary').hidden=true;}
+ const finished=data.sessions.filter(x=>x.endedAt).slice().reverse();
+ $('sessionHistory').innerHTML=finished.length?'<div class="kicker" style="margin-top:20px">PREVIOUS SESSIONS</div>'+finished.map(sess=>{const items=sessionExercises(sess.id),sets=items.reduce((n,x)=>n+(Array.isArray(x.doneSets)?x.doneSets.length:0),0),total=items.reduce((n,x)=>n+(Number(x.sets)||0),0),vol=Math.round(sessionVolume(items)),mins=Math.max(0,Math.round((Number(sess.endedAt)-Number(sess.startedAt))/60000));return `<article class="history-item"><div style="flex:1"><strong>${safe(sess.date)} · ${safe(sess.startTime)}–${safe(sess.endTime)}</strong><small>${items.length} تمارين · ${sets}/${total} مجموعة مكتملة · ${mins} دقيقة<br>حجم التدريب: ${vol.toLocaleString('en-US')} كجم × تكرار</small></div><button class="delete" type="button" data-session-delete="${safe(sess.id)}">حذف</button></article>`}).join(''):'<p class="empty">لسه مفيش جلسات مكتملة. ابدأ أول تمرينة!</p>';
+}
+$('startSession').addEventListener('click',()=>{if(currentSession())return;const now=Date.now(),d=new Date();const session={id:now,startedAt:now,endedAt:null,date:d.toLocaleDateString('ar-EG'),startTime:d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'}),endTime:null};data.sessions.push(session);activeSessionId=session.id;data.activeSessionId=activeSessionId;save();render();notify('بدأت الجلسة! ضيف تمارينك دلوقتي');});
+$('finishSession').addEventListener('click',()=>{const active=currentSession();if(!active)return;const items=sessionExercises(active.id);if(!items.length&&!confirm('الجلسة دي مفيهاش تمارين. عايز تنهيها برضه؟'))return;const now=Date.now(),d=new Date();active.endedAt=now;active.endTime=d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});activeSessionId=null;data.activeSessionId=null;save();render();notify('اتحفظت الجلسة بنجاح');});
 function resetForm(){editingId=null;$('workoutForm').reset();$('sets').value=3;$('formHeading').innerHTML='سجّل تمرينك<span class="lime">.</span>';$('saveExercise').textContent='+ حفظ التمرين';$('cancelEdit').hidden=true;}
 $('workoutForm').addEventListener('submit',function(e){
  e.preventDefault();const name=$('exercise').value.trim(),weight=Number($('liftWeight').value),reps=Number($('reps').value),sets=Number($('sets').value);
@@ -96,7 +118,7 @@ $('workoutForm').addEventListener('submit',function(e){
    if(x){x.name=name;x.weight=weight;x.reps=reps;x.sets=sets;x.doneSets=(x.doneSets||[]).filter(i=>i<sets);}
    notify('تم تعديل التمرين');
  }else{
-   const now=Date.now();data.exercises.push({id:now,name,weight,reps,sets,doneSets:[],date:new Date().toLocaleDateString('ar-EG'),session:new Date().toLocaleDateString('en-CA'),timestamp:now});
+   const now=Date.now();data.exercises.push({id:now,name,weight,reps,sets,doneSets:[],date:new Date().toLocaleDateString('ar-EG'),session:new Date().toLocaleDateString('en-CA'),sessionId:currentSession()?currentSession().id:null,timestamp:now});
    notify('اتحفظ التمرين بنجاح');
  }
  save();resetForm();render();
@@ -107,12 +129,13 @@ document.addEventListener('change',function(e){
  if(e.target.matches('[data-set]')){const x=data.exercises.find(x=>String(x.id)===e.target.dataset.set);if(!x)return;x.doneSets=Array.isArray(x.doneSets)?x.doneSets:[];const i=Number(e.target.dataset.index);if(e.target.checked&&!x.doneSets.includes(i))x.doneSets.push(i);else x.doneSets=x.doneSets.filter(n=>n!==i);save();render();if(x.doneSets.length>=Number(x.sets))notify('برافو! خلصت كل المجموعات');else notify('تم تحديث المجموعات');}
 });
 document.addEventListener('click',function(e){
- const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');const wt=e.target.closest('[data-wt]');
+ const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');const wt=e.target.closest('[data-wt]');const sd=e.target.closest('[data-session-delete]');
+ if(sd){if(!confirm('تحذف الجلسة دي والتمارين المرتبطة بيها؟'))return;const sid=sd.dataset.sessionDelete;data.sessions=data.sessions.filter(x=>String(x.id)!==sid);data.exercises=data.exercises.filter(x=>String(x.sessionId)!==sid);save();render();notify('اتحذفت الجلسة');}
  if(edit){const x=data.exercises.find(x=>String(x.id)===edit.dataset.edit);if(!x)return;editingId=x.id;$('exercise').value=x.name;$('liftWeight').value=x.weight;$('reps').value=x.reps;$('sets').value=x.sets;$('formHeading').innerHTML='عدّل تمرينك<span class="lime">.</span>';$('saveExercise').textContent='حفظ التعديلات';$('cancelEdit').hidden=false;$('workout').scrollIntoView({behavior:'smooth'});}
  if(del){if(!confirm('تحذف التمرين ده؟'))return;data.exercises=data.exercises.filter(x=>String(x.id)!==del.dataset.delete);save();render();notify('اتحذف التمرين');}
  if(wt){data.weights=data.weights.filter(x=>String(x.id)!==wt.dataset.wt);save();render();notify('اتحذف الوزن');}
 });
-$('clearHistory').addEventListener('click',function(){if(!confirm('متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟'))return;data={exercises:[],weights:[]};save();resetForm();render();notify('السجل اتمسح');});
+$('clearHistory').addEventListener('click',function(){if(!confirm('متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟'))return;data={exercises:[],weights:[],sessions:[],activeSessionId:null};activeSessionId=null;save();resetForm();render();notify('السجل اتمسح');});
 $('historySearch').addEventListener('input',render);$('historyFilter').addEventListener('change',render);
 function updateTimer(){const m=Math.floor(timerSeconds/60),s=timerSeconds%60;$('timerDisplay').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
 $('timerStart').addEventListener('click',function(){if(timerInterval){clearInterval(timerInterval);timerInterval=null;this.textContent='كمّل';$('timerStatus').textContent='المؤقت متوقف مؤقتًا';return;}this.textContent='إيقاف';$('timerStatus').textContent='وقت الراحة شغال';timerInterval=setInterval(()=>{if(timerSeconds>0){timerSeconds--;updateTimer();}else{clearInterval(timerInterval);timerInterval=null;$('timerStart').textContent='ابدأ';$('timerStatus').textContent='خلصت الراحة!';notify('خلص وقت الراحة');if('vibrate'in navigator)navigator.vibrate([200,100,200]);}},1000);});
