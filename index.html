@@ -172,7 +172,7 @@ render();
 (function(){
  'use strict';
  // Set this to the deployed Cloudflare Worker URL. Never put the Gemini API key here.
- const AI_ENDPOINT = 'PASTE_CLOUDFLARE_WORKER_URL_HERE';
+ const AI_ENDPOINT = 'https://gymate-ai-coach.omarabaas081.workers.dev/';
  const byId=id=>document.getElementById(id);
  const chat=byId('aiChat'), input=byId('aiInput'), send=byId('aiSend'), status=byId('aiStatus'), planBox=byId('aiPlan');
  if(!chat||!input||!send)return;
