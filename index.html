@@ -1,226 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090b09">
 <title>GYMATE — Train Smarter</title>
 <style>
-:root{--bg:#090b09;--panel:#121512;--line:#292e29;--lime:#b7ff38;--muted:#92998f;--white:#f5f7f2;--red:#ff8585}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-button,input,select{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92%);margin:auto}
-header{height:75px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;background:#090b09ee;backdrop-filter:blur(14px);z-index:5}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:25px;font-weight:1000;letter-spacing:-1px}.logo span,.lime{color:var(--lime)}.navlinks{display:flex;gap:22px;font-size:13px;color:#c3c8bf}
-.hero{padding:60px 0 35px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}.kicker{color:var(--lime);font-size:11px;letter-spacing:3px;font-weight:900}
-h1{font-size:clamp(48px,8vw,88px);line-height:.98;letter-spacing:-4px;margin:22px 0}h1 span{color:var(--lime)}.hero p{color:var(--muted);line-height:1.9;max-width:480px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{border:1px solid var(--line);padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:800;display:inline-flex;justify-content:center;align-items:center;gap:8px}
-.primary{background:var(--lime);color:#090b09;border-color:var(--lime)}.secondary{background:#171a16;color:white}.danger{background:transparent;color:var(--red);border-color:#503131}
-button:disabled{opacity:.45;cursor:not-allowed}.hero-card{background:linear-gradient(145deg,#20291b,#10120f 65%);border:1px solid #38432d;border-radius:22px;padding:25px;min-height:230px;position:relative;overflow:hidden}.hero-card:after{content:"G";position:absolute;font-size:230px;font-weight:1000;color:#b7ff380c;right:5px;bottom:-75px;pointer-events:none}
-.big-number{font-size:72px;font-weight:1000;letter-spacing:-5px;margin:24px 0 4px}.small{font-size:12px;color:var(--muted)}.section{padding:25px 0}.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
-h2{font-size:clamp(25px,4vw,38px);margin:9px 0}.muted{color:var(--muted);font-size:13px;line-height:1.8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:20px}.card{transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-4px);border-color:#718f43}.card-icon{font-size:27px;margin-bottom:15px}.card h3{margin:0 0 8px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-size:13px;color:#d8ddd3;margin:14px 0 7px}
-input,select{width:100%;padding:13px;background:#090b09;color:white;border:1px solid #343a32;border-radius:10px;outline:none;min-width:0}input:focus,select:focus{border-color:var(--lime)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1;width:100%}form .btn{margin-top:17px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.stat{padding:16px;background:#090b09;border:1px solid var(--line);border-radius:12px}.stat strong{display:block;font-size:30px;margin:8px 0}.stat small{color:var(--muted)}
-.history-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.history-item strong{display:block;margin-bottom:5px}.history-item small{color:var(--muted);font-size:12px;line-height:1.8}
-.delete,.edit-btn{background:transparent;color:#ff8d8d;border:1px solid #503131;padding:7px 10px;border-radius:8px;cursor:pointer}.edit-btn{color:var(--lime);border-color:#43552d}.item-actions{display:flex;gap:6px;flex-shrink:0}.empty{padding:20px 0;color:var(--muted);font-size:13px}
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--lime);color:#090b09;padding:13px 20px;border-radius:12px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:10;white-space:nowrap;max-width:92%;text-align:center}.toast.show{opacity:1}
-.search-row{display:grid;grid-template-columns:1fr 180px;gap:10px;margin:15px 0}.sets-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.set-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:9px;padding:7px 9px;font-size:12px;color:#dfe5d9}.set-pill input{width:16px;height:16px;accent-color:var(--lime);padding:0}
-.session-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.session-status{padding:15px;border:1px solid #38432d;border-radius:12px;background:#090b09;margin-top:15px}.session-status strong{color:var(--lime)}.session-list{margin-top:12px}.session-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.session-summary .stat strong{font-size:22px}.timer-box{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;background:#090b09;border:1px solid #38432d;border-radius:13px;padding:15px;margin-top:15px}.timer-time{font-size:30px;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums}
-footer{margin-top:35px;padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:700px){.session-summary{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr;padding-top:38px}.hero-card{min-height:190px}.big-number{font-size:58px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}.search-row{grid-template-columns:1fr}.history-item{align-items:flex-start}.item-actions{flex-direction:column}.panel{padding:16px}}
-
-.ai-coach{border:1px solid #3a4b2b;background:linear-gradient(145deg,#151d12,#101210);border-radius:18px;padding:20px}
-.ai-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.ai-avatar{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#b7ff38;color:#090b09;font-size:23px;font-weight:1000;flex-shrink:0}.ai-bubble{padding:12px 14px;border:1px solid var(--line);border-radius:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}.ai-message{display:flex;margin:10px 0}.ai-message.user{justify-content:flex-start}.ai-message.user .ai-bubble{background:#1c2914;border-color:#3d5228}.ai-message.bot{justify-content:flex-end}.ai-message.bot .ai-bubble{background:#0b0d0b}.ai-chat{max-height:380px;overflow:auto;padding:5px 0;margin:12px 0}.ai-input-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.ai-input-row textarea{width:100%;resize:vertical;min-height:48px;max-height:130px;padding:12px;background:#090b09;color:#fff;border:1px solid #343a32;border-radius:10px;font:inherit}.ai-quick{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.ai-quick button{font-size:12px}.ai-plan{border:1px solid #34442a;border-radius:12px;padding:12px;margin-top:10px;background:#0b0e0a}.ai-plan-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.ai-status{font-size:12px;color:var(--muted);margin-top:8px;min-height:18px}.ai-disclaimer{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
-@media(max-width:600px){.ai-coach{padding:15px}.ai-input-row{grid-template-columns:1fr}.ai-input-row button{width:100%}}
-
+:root{--bg:#090b09;--panel:#121512;--line:#292e29;--lime:#b7ff38;--muted:#92998f;--white:#f5f7f2;--red:#ff7777}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92%);margin:auto}header{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;background:#090b09ee;backdrop-filter:blur(14px);z-index:5}.nav{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:25px;font-weight:1000;letter-spacing:-1px}.logo span,.lime{color:var(--lime)}.navlinks{display:flex;gap:18px;font-size:13px;color:#c3c8bf}.hero{padding:58px 0 34px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}.kicker{color:var(--lime);font-size:11px;letter-spacing:2px;font-weight:900}h1{font-size:clamp(44px,8vw,82px);line-height:.98;letter-spacing:-3px;margin:20px 0}h1 span{color:var(--lime)}.hero p{color:var(--muted);line-height:1.9;max-width:480px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid var(--line);padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:800;display:inline-flex;justify-content:center;align-items:center;gap:8px}.btn:disabled{opacity:.55;cursor:not-allowed}.primary{background:var(--lime);color:#090b09;border-color:var(--lime)}.secondary{background:#171a16;color:white}.hero-card,.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:20px}.hero-card{background:linear-gradient(145deg,#20291b,#10120f 65%);border-color:#38432d;min-height:220px}.big-number{font-size:64px;font-weight:1000;letter-spacing:-4px;margin:20px 0 4px}.small{font-size:12px;color:var(--muted);line-height:1.7}.section{padding:25px 0}.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}h2{font-size:clamp(25px,4vw,36px);margin:9px 0}.muted{color:var(--muted);font-size:13px;line-height:1.8}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card-icon{font-size:26px;margin-bottom:12px}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-size:13px;color:#d8ddd3;margin:13px 0 7px}input,textarea{width:100%;padding:12px;background:#090b09;color:white;border:1px solid #343a32;border-radius:10px;outline:none}input:focus,textarea:focus{border-color:var(--lime)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1;width:100%}form .btn{margin-top:15px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.stat{padding:14px;background:#090b09;border:1px solid var(--line);border-radius:12px}.stat strong{display:block;font-size:28px;margin:7px 0}.history-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.history-item strong{display:block;margin-bottom:4px}.history-item small{color:var(--muted);font-size:12px;line-height:1.8}.delete{background:transparent;color:#ff8d8d;border:1px solid #503131;padding:7px 10px;border-radius:8px;cursor:pointer}.empty{padding:18px 0;color:var(--muted);font-size:13px}.ai-shell{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.ai-chat{height:320px;overflow:auto;background:#090b09;border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}.ai-message{display:flex}.ai-message.user{justify-content:flex-start}.ai-message.bot{justify-content:flex-end}.ai-bubble{max-width:88%;padding:11px 13px;border-radius:12px;white-space:pre-wrap;line-height:1.7;font-size:14px;background:#1b2018;border:1px solid #30382b}.ai-message.user .ai-bubble{background:#b7ff38;color:#10130c;border-color:#b7ff38}.ai-compose{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.ai-compose input{min-width:0}.ai-status{font-size:12px;color:var(--muted);margin-top:8px;min-height:18px}.ai-plan{border:1px solid var(--line);background:#0d100c;border-radius:10px;padding:12px;margin-top:10px}.ai-plan-row{display:flex;justify-content:space-between;align-items:center;gap:12px}.ai-quick{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.ai-quick button{font-size:12px;padding:8px 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--lime);color:#090b09;padding:12px 18px;border-radius:12px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:10;white-space:nowrap}.toast.show{opacity:1}footer{margin-top:35px;padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding-top:35px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}.ai-compose{grid-template-columns:1fr}.ai-compose .btn{width:100%}.ai-chat{height:300px}.hero-card{min-height:180px}}
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="#">GYM<span>ATE.</span></a><nav class="navlinks"><a href="#sessions">الجلسات</a><a href="#workout">التمرين</a><a href="#progress">تقدمك</a><a href="#history">السجل</a></nav></div></header>
-<main class="wrap">
-<section class="hero"><div><div class="kicker">YOUR TRAINING. YOUR RULES.</div><h1>TRAIN<br>HARDER<span>.</span><br>GET BETTER.</h1><p>كل تمرينة ليها قيمة. سجّل أوزانك، تابع تقدمك، وخلّي كل جلسة تقرّبك من هدفك.</p><div class="actions"><a class="btn primary" href="#workout">ابدأ تمرينك ↙</a><a class="btn secondary" href="#history">راجع سجلك</a></div></div>
-<div class="hero-card"><div class="kicker">BUILT BY DISCIPLINE</div><div class="big-number" id="heroSessions">00</div><strong>TRAINING SESSIONS</strong><p class="small">كل جلسة بتتحسب. استمر.</p></div></section>
-<section class="section"><div class="section-title"><div><div class="kicker">YOUR TOOLKIT</div><h2>كل حاجة في مكان واحد<span class="lime">.</span></h2></div></div><div class="grid">
-<div class="card"><div class="card-icon">🏋️</div><h3>سجّل كل مجموعة</h3><p class="muted">تابع المجموعات المكتملة لكل تمرين.</p></div><div class="card"><div class="card-icon">📈</div><h3>تابع تقدمك</h3><p class="muted">ارجع لأوزانك السابقة وقارن أداءك.</p></div><div class="card"><div class="card-icon">⏱️</div><h3>نظّم الراحة</h3><p class="muted">مؤقت راحة بسيط بين المجموعات.</p></div></div></section>
-
-<section class="section" id="ai-coach">
- <div class="ai-coach">
-  <div class="ai-head"><div class="ai-avatar">G</div><div><div class="kicker">GYMATE AI COACH</div><h2 style="margin:5px 0">مدربك معاك<span class="lime">.</span></h2><div class="muted">اسأله عن تمرين النهارده، وهو هيمشي معاك خطوة بخطوة.</div></div></div>
-  <div class="ai-quick" aria-label="اختيارات سريعة">
-   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن صدر النهارده">صدر</button>
-   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن ضهر النهارده">ضهر</button>
-   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن رجل النهارده">رجل</button>
-   <button class="btn secondary" type="button" data-ai-quick="اقترح عليا تمرينة مناسبة النهارده حسب سجلي">اختارلي تمرينة</button>
-  </div>
-  <div class="ai-chat" id="aiChat" aria-live="polite"><div class="ai-message bot"><div class="ai-bubble">أهلاً بيك في GYMATE! 💪<br>هتمرّن إيه النهارده؟ قولّي هدفك والوقت المتاح، أو اختار عضلة من فوق. هسألك لو محتاج تفاصيل قبل ما أقترح الخطة.</div></div></div>
-  <div class="ai-input-row"><textarea id="aiInput" maxlength="1500" rows="2" placeholder="مثلاً: عايز صدر وتراي، عندي 45 دقيقة..."></textarea><button class="btn primary" id="aiSend" type="button">ابعت للمدرب ↗</button></div>
-  <div class="ai-status" id="aiStatus">المدرب محتاج اتصال بالإنترنت عشان يرد.</div>
-  <div id="aiPlan"></div>
-  <p class="ai-disclaimer">إرشاد عام للياقة وليس تشخيصًا طبيًا. ما تدخلش بيانات شخصية حساسة. لو فيه ألم أو دوخة أو إصابة، وقف التمرين واطلب مساعدة مختص.</p>
- </div>
-</section>
-
-<section class="section" id="sessions"><div class="panel"><div class="kicker">WORKOUT MODE</div><h2>جلسة تمرينك<span class="lime">.</span></h2><p class="muted">ابدأ جلسة، وسجّل تمارينك المعتادة أثناءها. هنربط كل تمرين بالجلسة ونحسب حجم التدريب والمجموعات المكتملة.</p><div class="session-actions"><button class="btn primary" id="startSession" type="button">▶ ابدأ تمرينة جديدة</button><button class="btn danger" id="finishSession" type="button" hidden>إنهاء التمرينة</button></div><div class="session-status" id="sessionStatus">مفيش جلسة تمرين شغالة حاليًا.</div><div class="session-summary" id="sessionSummary" hidden></div><div class="session-list" id="sessionHistory"><p class="empty">الجلسات اللي هتخلصها هتظهر هنا.</p></div></div></section>
-<section class="section split" id="workout"><div class="panel"><div class="kicker">01 / TRAINING LOG</div><h2 id="formHeading">سجّل تمرينك<span class="lime">.</span></h2><p class="muted">اكتب بيانات التمرين، وبعد الحفظ علّم المجموعات اللي خلصتها.</p>
-<form id="workoutForm"><label for="exercise">اسم التمرين</label><input id="exercise" type="text" placeholder="مثلاً Bench Press" maxlength="60" required>
-<div class="form-grid"><div><label for="liftWeight">الوزن بالكيلو</label><input id="liftWeight" type="number" min="0" step="0.5" placeholder="40" required></div><div><label for="reps">التكرارات لكل مجموعة</label><input id="reps" type="number" min="1" max="200" placeholder="10" required></div><div class="full"><label for="sets">عدد المجموعات</label><input id="sets" type="number" min="1" max="30" value="3" required></div></div>
-<button class="btn primary full" type="submit" id="saveExercise">+ حفظ التمرين</button><button class="btn secondary full" type="button" id="cancelEdit" hidden>إلغاء التعديل</button></form>
-<div class="timer-box"><div><div class="kicker">REST TIMER</div><div class="timer-time" id="timerDisplay">01:30</div><div class="small" id="timerStatus">مؤقت الراحة جاهز</div></div><div class="actions" style="margin:0"><button class="btn primary" id="timerStart" type="button">ابدأ</button><button class="btn secondary" id="timerAdd" type="button">+30 ثانية</button><button class="btn secondary" id="timerReset" type="button">إعادة</button></div></div>
-</div>
-<div class="panel" id="progress"><div class="kicker">02 / BODY TRACKER</div><h2>تقدمك<span class="lime">.</span></h2><p class="muted">سجّل وزن جسمك عشان تتابع التغيّر مع الوقت.</p>
-<form id="bodyForm"><label for="bodyWeight">وزن جسمك الحالي بالكيلو</label><input id="bodyWeight" type="number" min="1" max="500" step="0.1" placeholder="مثلاً 75.5" required><button class="btn primary full" type="submit">حفظ وزن الجسم</button></form>
-<div class="stats"><div class="stat"><span class="muted">آخر وزن</span><strong id="latestWeight">--</strong><small>KG</small></div><div class="stat"><span class="muted">إجمالي الجلسات</span><strong id="totalSessions">0</strong><small>SESSIONS</small></div></div><div id="weightHistory"><p class="empty">لسه مفيش أوزان مسجّلة.</p></div></div></section>
-<section class="section" id="history"><div class="panel"><div class="section-title"><div><div class="kicker">03 / YOUR HISTORY</div><h2>سجل التمرين<span class="lime">.</span></h2></div><button class="btn danger" id="clearHistory" type="button">مسح السجل كله</button></div>
-<div class="search-row"><input id="historySearch" type="search" placeholder="ابحث باسم التمرين..."><select id="historyFilter" aria-label="فلترة السجل"><option value="all">كل السجل</option><option value="7">آخر 7 أيام</option><option value="30">آخر 30 يوم</option></select></div><div id="exerciseHistory"><p class="empty">التمارين اللي هتحفظها هتظهر هنا.</p></div></div></section>
+<header><div class="wrap nav"><a class="logo" href="#top">GYM<span>ATE.</span></a><nav class="navlinks"><a href="#workout">التمرين</a><a href="#coach">المدرب الذكي</a><a href="#progress">تقدمك</a><a href="#history">السجل</a></nav></div></header>
+<main class="wrap" id="top">
+<section class="hero"><div><div class="kicker">YOUR TRAINING. YOUR RULES.</div><h1>TRAIN<br>HARDER<span>.</span><br>GET BETTER.</h1><p>سجّل أوزانك، تابع تقدمك، وخلي مدرب GYMATE الذكي يمشي معاك خطوة بخطوة في التمرين.</p><div class="actions"><a class="btn primary" href="#workout">ابدأ تمرينك ↙</a><a class="btn secondary" href="#coach">قابل المدرب الذكي ⚡</a></div></div><div class="hero-card"><div class="kicker">BUILT BY DISCIPLINE</div><div class="big-number" id="heroSessions">00</div><strong>TRAINING SESSIONS</strong><p class="small">كل جلسة بتتحسب. استمر.</p></div></section>
+<section class="section"><div class="section-title"><div><div class="kicker">YOUR TOOLKIT</div><h2>كل حاجة في مكان واحد<span class="lime">.</span></h2></div></div><div class="grid"><div class="card"><div class="card-icon">🏋️</div><h3>سجّل تمرينك</h3><p class="muted">احفظ الوزن والتكرارات والمجموعات لكل تمرين.</p></div><div class="card"><div class="card-icon">📈</div><h3>تابع تقدمك</h3><p class="muted">سجّل وزن جسمك وارجع لقياساتك السابقة.</p></div><div class="card"><div class="card-icon">⚡</div><h3>مدرب ذكي</h3><p class="muted">اسأله عن تمرينك وخد اقتراحات مبنية على سجلك.</p></div></div></section>
+<section class="section split" id="workout"><div class="panel"><div class="kicker">01 / TRAINING LOG</div><h2>سجّل تمرينك<span class="lime">.</span></h2><p class="muted">دخل بيانات التمرين وبعدها اضغط حفظ.</p><form id="workoutForm"><label for="exercise">اسم التمرين</label><input id="exercise" type="text" placeholder="اكتب اسم التمرين بتاعك" maxlength="60" required><div class="form-grid"><div><label for="liftWeight">الوزن بالكيلو</label><input id="liftWeight" type="number" min="0" step="0.5" placeholder="40" required></div><div><label for="reps">التكرارات</label><input id="reps" type="number" min="1" max="200" placeholder="10" required></div><div class="full"><label for="sets">عدد المجموعات</label><input id="sets" type="number" min="1" max="30" value="3" required></div></div><button class="btn primary full" type="submit">+ حفظ التمرين</button></form></div>
+<div class="panel" id="progress"><div class="kicker">02 / BODY TRACKER</div><h2>تقدمك<span class="lime">.</span></h2><p class="muted">سجّل وزن جسمك عشان تتابع التغيّر مع الوقت.</p><form id="bodyForm"><label for="bodyWeight">وزن جسمك الحالي بالكيلو</label><input id="bodyWeight" type="number" min="1" max="500" step="0.1" placeholder="مثلاً 75.5" required><button class="btn primary full" type="submit">حفظ وزن الجسم</button></form><div class="stats"><div class="stat"><span class="muted">آخر وزن</span><strong id="latestWeight">--</strong><small>KG</small></div><div class="stat"><span class="muted">إجمالي الجلسات</span><strong id="totalSessions">0</strong><small>SESSIONS</small></div></div><div id="weightHistory"><p class="empty">لسه مفيش أوزان مسجّلة.</p></div></div></section>
+<section class="section" id="coach"><div class="panel"><div class="section-title"><div><div class="kicker">03 / YOUR AI TRAINER</div><h2>المدرب الذكي<span class="lime">.</span></h2><p class="muted">قول له هدفك النهارده، وهيقترح عليك الخطوة الجاية. متتمرنش من خلال الألم، واستشر مختص لو عندك إصابة أو حالة صحية.</p></div></div><div class="ai-shell"><div class="ai-chat" id="aiChat" aria-live="polite"><div class="ai-message bot"><div class="ai-bubble">أهلاً بيك في GYMATE. تحب تتمرن إيه النهارده؟ صدر، ظهر، رجل، ولا لسه بتحدد؟</div></div></div><div class="ai-quick"><button class="btn secondary" type="button" data-ai-quick="عايز أتمرن صدر النهارده">صدر</button><button class="btn secondary" type="button" data-ai-quick="عايز أتمرن ظهر النهارده">ظهر</button><button class="btn secondary" type="button" data-ai-quick="عايز أتمرن رجل النهارده">رجل</button><button class="btn secondary" type="button" data-ai-quick="ساعدني أختار تمرين النهارده">اختارلي</button></div><div class="ai-compose"><input id="aiInput" type="text" maxlength="1500" placeholder="اكتب سؤالك للمدرب..." autocomplete="off"><button class="btn primary" id="aiSend" type="button">ابعت ↗</button></div><div class="ai-status" id="aiStatus" role="status">جاهز للتمرين</div><div id="aiPlan"></div></div></div></section>
+<section class="section" id="history"><div class="panel"><div class="section-title"><div><div class="kicker">04 / YOUR HISTORY</div><h2>سجل التمرين<span class="lime">.</span></h2></div><button class="btn secondary" id="clearHistory" type="button">مسح السجل</button></div><div id="exerciseHistory"><p class="empty">التمارين اللي هتحفظها هتظهر هنا.</p></div></div></section>
 </main>
-<footer><div class="wrap footer-inner"><span class="logo">GYM<span>ATE.</span></span><span>Designed &amp; Developed by Omar Abbas · © 2026</span></div></footer><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer><div class="wrap footer-inner"><span class="logo">GYM<span>ATE.</span></span><span>Designed &amp; Developed by <strong style="color:var(--lime)">Omar Abbas</strong> · © 2026</span></div></footer><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 'use strict';
 const KEY='gymate-complete-v1';
-let data;
-try{data=JSON.parse(localStorage.getItem(KEY))||{exercises:[],weights:[]};}catch(e){data={exercises:[],weights:[]};}
-data.exercises=Array.isArray(data.exercises)?data.exercises:[];
-data.weights=Array.isArray(data.weights)?data.weights:[];
-data.sessions=Array.isArray(data.sessions)?data.sessions:[];
-let activeSessionId=data.activeSessionId||null;
-data.exercises.forEach(x=>{if(!Array.isArray(x.doneSets))x.doneSets=[];});
+const AI_ENDPOINT='https://gymate-ai-coach.omarabaas081.workers.dev/';
 const $=id=>document.getElementById(id);
-let editingId=null,timerSeconds=90,timerInterval=null;
-const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
-function notify(text){$('toast').textContent=text;$('toast').classList.add('show');clearTimeout(notify.timeout);notify.timeout=setTimeout(()=>$('toast').classList.remove('show'),2300);}
-function safe(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function sessionKey(x){return x.session||x.date||'قديم';}
-function render(){
- const sessionsCount=data.sessions.filter(x=>x.endedAt).length + new Set(data.exercises.filter(x=>!x.sessionId).map(sessionKey)).size;
- $('totalSessions').textContent=sessionsCount;$('heroSessions').textContent=String(sessionsCount).padStart(2,'0');
- $('latestWeight').textContent=data.weights.length?data.weights[data.weights.length-1].weight:'--';
- const term=$('historySearch').value.trim().toLocaleLowerCase();
- const days=$('historyFilter').value;
- const cutoff=days==='all'?0:Date.now()-Number(days)*86400000;
- const list=data.exercises.filter(x=>{
-   const match=(x.name||'').toLocaleLowerCase().includes(term);
-   let dateOk=true;
-   if(cutoff){const d=x.timestamp?Number(x.timestamp):Date.parse(x.session||'');dateOk=Number.isFinite(d)&&d>=cutoff;}
-   return match&&dateOk;
- }).slice().reverse();
- $('exerciseHistory').innerHTML=list.length?list.map(x=>{
-   const done=Array.isArray(x.doneSets)?x.doneSets:[];
-   const setControls=Array.from({length:Math.max(1,Math.min(30,Number(x.sets)||1))},(_,i)=>`<label class="set-pill"><input type="checkbox" data-set="${safe(x.id)}" data-index="${i}" ${done.includes(i)?'checked':''}> مجموعة ${i+1}</label>`).join('');
-   return `<article class="history-item"><div style="flex:1;min-width:0"><strong>${safe(x.name)}</strong><small>${safe(x.date||'')} · ${Number(x.weight)||0} كجم × ${Number(x.reps)||0} تكرار × ${Number(x.sets)||0} مجموعات</small><div class="sets-row">${setControls}</div><small>${done.length} من ${Number(x.sets)||0} مجموعات مكتملة</small></div><div class="item-actions"><button class="edit-btn" type="button" data-edit="${safe(x.id)}">تعديل</button><button class="delete" type="button" data-delete="${safe(x.id)}">حذف</button></div></article>`;
- }).join(''):'<p class="empty">مفيش تمارين مطابقة للبحث.</p>';
- $('weightHistory').innerHTML=data.weights.length?data.weights.slice().reverse().slice(0,5).map(x=>`<div class="history-item"><div><strong>${safe(x.weight)} كجم</strong><small>${safe(x.date)}</small></div><button class="delete" type="button" data-wt="${safe(x.id)}">حذف</button></div>`).join(''):'<p class="empty">لسه مفيش أوزان مسجّلة.</p>';
- renderSessionUI();
-}
-function currentSession(){return data.sessions.find(x=>String(x.id)===String(activeSessionId))||null;}
-function sessionExercises(id){return data.exercises.filter(x=>String(x.sessionId)===String(id));}
-function sessionVolume(items){return items.reduce((sum,x)=>sum+(Number(x.weight)||0)*(Number(x.reps)||0)*(Array.isArray(x.doneSets)?x.doneSets.length:0),0);}
-function renderSessionUI(){
- const active=currentSession();
- $('startSession').hidden=!!active;
- $('finishSession').hidden=!active;
- if(active){
-  const items=sessionExercises(active.id), completed=items.reduce((n,x)=>n+(Array.isArray(x.doneSets)?x.doneSets.length:0),0), total=items.reduce((n,x)=>n+(Number(x.sets)||0),0);
-  $('sessionStatus').innerHTML=`<strong>جلسة شغالة دلوقتي</strong><br>${safe(active.date)} · بدأت ${safe(active.startTime)}<br><span class="small">${items.length} تمارين · ${completed}/${total} مجموعة مكتملة</span>`;
-  $('sessionSummary').hidden=false;
-  $('sessionSummary').innerHTML=`<div class="stat"><span class="muted">التمارين</span><strong>${items.length}</strong></div><div class="stat"><span class="muted">المجموعات</span><strong>${completed}/${total}</strong></div><div class="stat"><span class="muted">حجم التدريب</span><strong>${Math.round(sessionVolume(items)).toLocaleString('en-US')}</strong><small>كجم × تكرار</small></div>`;
- }else{$('sessionStatus').textContent='مفيش جلسة تمرين شغالة حاليًا. ابدأ جلسة قبل ما تبدأ تمرينك، والتمارين الجديدة هتتربط بيها تلقائيًا.';$('sessionSummary').hidden=true;}
- const finished=data.sessions.filter(x=>x.endedAt).slice().reverse();
- $('sessionHistory').innerHTML=finished.length?'<div class="kicker" style="margin-top:20px">PREVIOUS SESSIONS</div>'+finished.map(sess=>{const items=sessionExercises(sess.id),sets=items.reduce((n,x)=>n+(Array.isArray(x.doneSets)?x.doneSets.length:0),0),total=items.reduce((n,x)=>n+(Number(x.sets)||0),0),vol=Math.round(sessionVolume(items)),mins=Math.max(0,Math.round((Number(sess.endedAt)-Number(sess.startedAt))/60000));return `<article class="history-item"><div style="flex:1"><strong>${safe(sess.date)} · ${safe(sess.startTime)}–${safe(sess.endTime)}</strong><small>${items.length} تمارين · ${sets}/${total} مجموعة مكتملة · ${mins} دقيقة<br>حجم التدريب: ${vol.toLocaleString('en-US')} كجم × تكرار</small></div><button class="delete" type="button" data-session-delete="${safe(sess.id)}">حذف</button></article>`}).join(''):'<p class="empty">لسه مفيش جلسات مكتملة. ابدأ أول تمرينة!</p>';
-}
-$('startSession').addEventListener('click',()=>{if(currentSession())return;const now=Date.now(),d=new Date();const session={id:now,startedAt:now,endedAt:null,date:d.toLocaleDateString('ar-EG'),startTime:d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'}),endTime:null};data.sessions.push(session);activeSessionId=session.id;data.activeSessionId=activeSessionId;save();render();notify('بدأت الجلسة! ضيف تمارينك دلوقتي');});
-$('finishSession').addEventListener('click',()=>{const active=currentSession();if(!active)return;const items=sessionExercises(active.id);if(!items.length&&!confirm('الجلسة دي مفيهاش تمارين. عايز تنهيها برضه؟'))return;const now=Date.now(),d=new Date();active.endedAt=now;active.endTime=d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});activeSessionId=null;data.activeSessionId=null;save();render();notify('اتحفظت الجلسة بنجاح');});
-function resetForm(){editingId=null;$('workoutForm').reset();$('sets').value=3;$('formHeading').innerHTML='سجّل تمرينك<span class="lime">.</span>';$('saveExercise').textContent='+ حفظ التمرين';$('cancelEdit').hidden=true;}
-$('workoutForm').addEventListener('submit',function(e){
- e.preventDefault();const name=$('exercise').value.trim(),weight=Number($('liftWeight').value),reps=Number($('reps').value),sets=Number($('sets').value);
- if(!name||weight<0||reps<1||sets<1||sets>30){notify('راجع بيانات التمرين');return;}
- if(editingId!==null){
-   const x=data.exercises.find(x=>String(x.id)===String(editingId));
-   if(x){x.name=name;x.weight=weight;x.reps=reps;x.sets=sets;x.doneSets=(x.doneSets||[]).filter(i=>i<sets);}
-   notify('تم تعديل التمرين');
- }else{
-   const now=Date.now();data.exercises.push({id:now,name,weight,reps,sets,doneSets:[],date:new Date().toLocaleDateString('ar-EG'),session:new Date().toLocaleDateString('en-CA'),sessionId:currentSession()?currentSession().id:null,timestamp:now});
-   notify('اتحفظ التمرين بنجاح');
- }
- save();resetForm();render();
-});
-$('cancelEdit').addEventListener('click',resetForm);
-$('bodyForm').addEventListener('submit',function(e){e.preventDefault();const weight=Number($('bodyWeight').value);if(weight<=0){notify('اكتب وزن صحيح');return;}data.weights.push({id:Date.now(),weight,date:new Date().toLocaleDateString('ar-EG'),timestamp:Date.now()});save();render();this.reset();notify('اتحفظ وزن جسمك');});
-document.addEventListener('change',function(e){
- if(e.target.matches('[data-set]')){const x=data.exercises.find(x=>String(x.id)===e.target.dataset.set);if(!x)return;x.doneSets=Array.isArray(x.doneSets)?x.doneSets:[];const i=Number(e.target.dataset.index);if(e.target.checked&&!x.doneSets.includes(i))x.doneSets.push(i);else x.doneSets=x.doneSets.filter(n=>n!==i);save();render();if(x.doneSets.length>=Number(x.sets))notify('برافو! خلصت كل المجموعات');else notify('تم تحديث المجموعات');}
-});
-document.addEventListener('click',function(e){
- const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');const wt=e.target.closest('[data-wt]');const sd=e.target.closest('[data-session-delete]');
- if(sd){if(!confirm('تحذف الجلسة دي والتمارين المرتبطة بيها؟'))return;const sid=sd.dataset.sessionDelete;data.sessions=data.sessions.filter(x=>String(x.id)!==sid);data.exercises=data.exercises.filter(x=>String(x.sessionId)!==sid);save();render();notify('اتحذفت الجلسة');}
- if(edit){const x=data.exercises.find(x=>String(x.id)===edit.dataset.edit);if(!x)return;editingId=x.id;$('exercise').value=x.name;$('liftWeight').value=x.weight;$('reps').value=x.reps;$('sets').value=x.sets;$('formHeading').innerHTML='عدّل تمرينك<span class="lime">.</span>';$('saveExercise').textContent='حفظ التعديلات';$('cancelEdit').hidden=false;$('workout').scrollIntoView({behavior:'smooth'});}
- if(del){if(!confirm('تحذف التمرين ده؟'))return;data.exercises=data.exercises.filter(x=>String(x.id)!==del.dataset.delete);save();render();notify('اتحذف التمرين');}
- if(wt){data.weights=data.weights.filter(x=>String(x.id)!==wt.dataset.wt);save();render();notify('اتحذف الوزن');}
-});
-$('clearHistory').addEventListener('click',function(){if(!confirm('متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟'))return;data={exercises:[],weights:[],sessions:[],activeSessionId:null};activeSessionId=null;save();resetForm();render();notify('السجل اتمسح');});
-$('historySearch').addEventListener('input',render);$('historyFilter').addEventListener('change',render);
-function updateTimer(){const m=Math.floor(timerSeconds/60),s=timerSeconds%60;$('timerDisplay').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
-$('timerStart').addEventListener('click',function(){if(timerInterval){clearInterval(timerInterval);timerInterval=null;this.textContent='كمّل';$('timerStatus').textContent='المؤقت متوقف مؤقتًا';return;}this.textContent='إيقاف';$('timerStatus').textContent='وقت الراحة شغال';timerInterval=setInterval(()=>{if(timerSeconds>0){timerSeconds--;updateTimer();}else{clearInterval(timerInterval);timerInterval=null;$('timerStart').textContent='ابدأ';$('timerStatus').textContent='خلصت الراحة!';notify('خلص وقت الراحة');if('vibrate'in navigator)navigator.vibrate([200,100,200]);}},1000);});
-$('timerAdd').addEventListener('click',()=>{timerSeconds+=30;updateTimer();notify('اتضافت 30 ثانية');});
-$('timerReset').addEventListener('click',()=>{clearInterval(timerInterval);timerInterval=null;timerSeconds=90;updateTimer();$('timerStart').textContent='ابدأ';$('timerStatus').textContent='مؤقت الراحة جاهز';});
+let data={exercises:[],weights:[]};
+try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');if(saved&&typeof saved==='object')data=saved;}catch(e){}
+data.exercises=Array.isArray(data.exercises)?data.exercises:[];data.weights=Array.isArray(data.weights)?data.weights:[];
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){notify('تعذر حفظ البيانات على الجهاز');}};
+function notify(text){const el=$('toast');if(!el)return;el.textContent=text;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
+function safe(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function render(){const sessions=new Set(data.exercises.map(x=>x.session||x.date||'unknown')).size;$('totalSessions').textContent=String(sessions);$('heroSessions').textContent=String(sessions).padStart(2,'0');$('latestWeight').textContent=data.weights.length?data.weights[data.weights.length-1].weight:'--';$('exerciseHistory').innerHTML=data.exercises.length?data.exercises.slice().reverse().map(x=>`<div class="history-item"><div><strong>${safe(x.name)}</strong><small>${safe(x.date||'')} · ${Number(x.weight)||0} كجم × ${Number(x.reps)||0} تكرار × ${Number(x.sets)||0} مجموعات</small></div><button class="delete" type="button" data-ex="${safe(x.id)}">حذف</button></div>`).join(''):'<p class="empty">التمارين اللي هتحفظها هتظهر هنا.</p>';$('weightHistory').innerHTML=data.weights.length?data.weights.slice().reverse().slice(0,5).map(x=>`<div class="history-item"><div><strong>${Number(x.weight)} كجم</strong><small>${safe(x.date||'')}</small></div><button class="delete" type="button" data-wt="${safe(x.id)}">حذف</button></div>`).join(''):'<p class="empty">لسه مفيش أوزان مسجّلة.</p>';}
+$('workoutForm').addEventListener('submit',function(e){e.preventDefault();const name=$('exercise').value.trim(),weight=Number($('liftWeight').value),reps=Number($('reps').value),sets=Number($('sets').value);if(!name||weight<0||reps<1||sets<1){notify('راجع البيانات اللي دخلتها');return;}const now=Date.now();data.exercises.push({id:now,name,weight,reps,sets,date:new Date().toLocaleDateString('ar-EG'),session:new Date().toLocaleDateString('en-CA')});save();render();this.reset();$('sets').value=3;notify('اتحفظ التمرين بنجاح');});
+$('bodyForm').addEventListener('submit',function(e){e.preventDefault();const weight=Number($('bodyWeight').value);if(weight<=0){notify('اكتب وزن صحيح');return;}data.weights.push({id:Date.now(),weight,date:new Date().toLocaleDateString('ar-EG')});save();render();this.reset();notify('اتحفظ وزن جسمك');});
+document.addEventListener('click',function(e){const ex=e.target.closest('[data-ex]'),wt=e.target.closest('[data-wt]');if(ex){data.exercises=data.exercises.filter(x=>String(x.id)!==ex.dataset.ex);save();render();notify('اتحذف التمرين');}if(wt){data.weights=data.weights.filter(x=>String(x.id)!==wt.dataset.wt);save();render();notify('اتحذف الوزن');}});
+$('clearHistory').addEventListener('click',function(){if(!confirm('متأكد إنك عايز تمسح سجل التمارين والأوزان كله؟'))return;data.exercises=[];data.weights=[];save();render();notify('السجل اتمسح');});
+const chat=$('aiChat'),input=$('aiInput'),send=$('aiSend'),status=$('aiStatus'),planBox=$('aiPlan');let messages=[];let lastPlan=[];let busy=false;
+function addMessage(role,text){const row=document.createElement('div');row.className='ai-message '+(role==='user'?'user':'bot');const bubble=document.createElement('div');bubble.className='ai-bubble';bubble.textContent=text;row.appendChild(bubble);chat.appendChild(row);chat.scrollTop=chat.scrollHeight;}
+function getContext(){return {recentExercises:data.exercises.slice(-12).map(x=>({name:x.name,weight:x.weight,reps:x.reps,sets:x.sets,date:x.date,sessionId:x.session||null})),recentSessions:[...new Set(data.exercises.map(x=>x.session||x.date).filter(Boolean))].slice(-6).map(date=>({date})),activeSessionId:null};}
+function renderPlan(plan){lastPlan=Array.isArray(plan)?plan.filter(x=>x&&typeof x.name==='string').slice(0,6):[];if(!lastPlan.length){planBox.innerHTML='';return;}planBox.innerHTML='<div class="kicker" style="margin-top:16px">خطة مقترحة — راجعها قبل التطبيق</div>'+lastPlan.map((x,i)=>`<div class="ai-plan"><div class="ai-plan-row"><div><strong>${safe(x.name)}</strong><div class="small">${Math.max(1,Math.min(10,Number(x.sets)||3))} مجموعات × ${Math.max(1,Math.min(30,Number(x.reps)||10))} تكرار · راحة ${Math.max(30,Math.min(300,Number(x.restSeconds)||90))} ثانية</div>${x.note?`<div class="small">${safe(x.note)}</div>`:''}</div><button type="button" class="btn secondary" data-ai-add="${i}">أضف للسجل</button></div></div>`).join('');}
+async function sendMessage(text){text=(text||'').trim();if(!text||busy)return;busy=true;addMessage('user',text);messages.push({role:'user',content:text});messages=messages.slice(-12);input.value='';send.disabled=true;status.textContent='المدرب بيفكر...';planBox.innerHTML='';const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),45000);try{const res=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages,context:getContext()}),signal:controller.signal,cache:'no-store'});const raw=await res.text();let payload={};try{payload=JSON.parse(raw);}catch(e){throw new Error('رد غير مفهوم من خدمة المدرب ('+res.status+')');}if(!res.ok)throw new Error((payload.error||'حصل خطأ')+(payload.detail?': '+payload.detail:''));const reply=String(payload.message||'تحب تتمرن إيه النهارده؟');addMessage('assistant',reply);messages.push({role:'assistant',content:reply});messages=messages.slice(-12);renderPlan(payload.plan);status.textContent='متصل بالمدرب الذكي';}catch(err){const message=err&&err.name==='AbortError'?'الرد اتأخر أكتر من 45 ثانية. جرّب تاني بعد لحظة.':(err&&err.message==='Failed to fetch'?'الاتصال بالخدمة فشل. اتأكد إن Cloudflare Worker منشور وCORS مضبوط.':(err.message||'راجع اتصال الإنترنت وإعدادات الخدمة.'));status.textContent='تعذّر الاتصال بالمدرب';addMessage('assistant','مش قادر أوصل للمدرب دلوقتي. '+message);}finally{clearTimeout(timer);busy=false;send.disabled=false;input.focus();}}
+send.addEventListener('click',()=>sendMessage(input.value));input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(input.value);}});document.querySelectorAll('[data-ai-quick]').forEach(b=>b.addEventListener('click',()=>sendMessage(b.dataset.aiQuick)));planBox.addEventListener('click',e=>{const b=e.target.closest('[data-ai-add]');if(!b)return;const x=lastPlan[Number(b.dataset.aiAdd)];if(!x)return;data.exercises.push({id:Date.now(),name:String(x.name),weight:Math.max(0,Number(x.weight)||0),reps:Math.max(1,Number(x.reps)||10),sets:Math.max(1,Number(x.sets)||3),date:new Date().toLocaleDateString('ar-EG'),session:new Date().toLocaleDateString('en-CA')});save();render();notify('اتضاف التمرين للسجل');});
 render();
 })();
 </script>
-
-<script>
-(function(){
- 'use strict';
- // Set this to the deployed Cloudflare Worker URL. Never put the Gemini API key here.
- const AI_ENDPOINT = 'https://gymate-ai-coach.omarabaas081.workers.dev/';
- const byId=id=>document.getElementById(id);
- const chat=byId('aiChat'), input=byId('aiInput'), send=byId('aiSend'), status=byId('aiStatus'), planBox=byId('aiPlan');
- if(!chat||!input||!send)return;
- let messages=[]; let lastPlan=[];
- function addMessage(role,text){
-  const row=document.createElement('div');row.className='ai-message '+(role==='user'?'user':'bot');
-  const bubble=document.createElement('div');bubble.className='ai-bubble';bubble.textContent=text;row.appendChild(bubble);chat.appendChild(row);chat.scrollTop=chat.scrollHeight;
- }
- function getContext(){
-  try{const d=JSON.parse(localStorage.getItem('gymate-complete-v1'))||{};const ex=Array.isArray(d.exercises)?d.exercises:[];const sessions=Array.isArray(d.sessions)?d.sessions:[];
-   return {recentExercises:ex.slice(-12).map(x=>({name:x.name,weight:x.weight,reps:x.reps,sets:x.sets,completedSets:Array.isArray(x.doneSets)?x.doneSets.length:0,date:x.date,sessionId:x.sessionId||null})),recentSessions:sessions.slice(-6).map(s=>({date:s.date,startedAt:s.startedAt,endedAt:s.endedAt})),activeSessionId:d.activeSessionId||null};
-  }catch(e){return {recentExercises:[],recentSessions:[],activeSessionId:null};}
- }
- function renderPlan(plan){
-  lastPlan=Array.isArray(plan)?plan.filter(x=>x&&typeof x.name==='string').slice(0,10):[];
-  if(!lastPlan.length){planBox.innerHTML='';return;}
-  planBox.innerHTML='<div class="kicker" style="margin-top:16px">خطة مقترحة — راجعها قبل التطبيق</div>'+lastPlan.map((x,i)=>`<div class="ai-plan"><div class="ai-plan-row"><div><strong>${escapeHtml(x.name)}</strong><div class="small">${Math.max(1,Math.min(10,Number(x.sets)||3))} مجموعات × ${Math.max(1,Math.min(30,Number(x.reps)||10))} تكرار · راحة ${Math.max(30,Math.min(300,Number(x.restSeconds)||90))} ثانية</div>${x.note?`<div class="small">${escapeHtml(x.note)}</div>`:''}</div><button type="button" class="btn secondary" data-ai-add="${i}">أضف للتمرين</button></div></div>`).join('');
- }
- function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
- async function sendMessage(text){
-  text=(text||'').trim();if(!text)return;
-  if(AI_ENDPOINT.includes('PASTE_CLOUDFLARE')){status.textContent='لسه محتاجين ننشر خدمة المدرب ونحط رابطها هنا.';addMessage('bot','الواجهة جاهزة، لكن المدرب مش متوصل لسه. لازم نجهّز Cloudflare Worker ونحط رابطه في إعداد AI_ENDPOINT.');return;}
-  if(messages.length>=16)messages=messages.slice(-12);
-  addMessage('user',text);messages.push({role:'user',content:text});input.value='';send.disabled=true;status.textContent='المدرب بيفكر...';planBox.innerHTML='';
-  try{
-   const res=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:messages.slice(-12),context:getContext()})});
-   const payload=await res.json().catch(()=>({}));
-   if(!res.ok)throw new Error(payload.error||`حصل خطأ (${res.status})`);
-   const reply=String(payload.message||'مش قادر أطلع رد دلوقتي. جرّب تاني.');addMessage('bot',reply);messages.push({role:'assistant',content:reply});renderPlan(payload.plan);status.textContent='متصل بالمدرب الذكي';
-  }catch(err){status.textContent='تعذّر الاتصال بالمدرب';addMessage('bot','مش قادر أوصل للمدرب دلوقتي. '+(err.message||'راجع اتصال الإنترنت وإعدادات الخدمة.'));}
-  finally{send.disabled=false;input.focus();}
- }
- send.addEventListener('click',()=>sendMessage(input.value));
- input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(input.value);}});
- document.querySelectorAll('[data-ai-quick]').forEach(b=>b.addEventListener('click',()=>sendMessage(b.dataset.aiQuick)));
- planBox.addEventListener('click',e=>{
-  const b=e.target.closest('[data-ai-add]');if(!b)return;const x=lastPlan[Number(b.dataset.aiAdd)];if(!x)return;
-  const start=byId('startSession');if(start&&!start.hidden)start.click();
-  byId('exercise').value=x.name;
-  byId('liftWeight').value=Number(x.weight)||0;
-  byId('reps').value=Math.max(1,Math.min(200,Number(x.reps)||10));
-  byId('sets').value=Math.max(1,Math.min(30,Number(x.sets)||3));
-  byId('workout').scrollIntoView({behavior:'smooth'});
-  byId('exercise').focus();
-  status.textContent='اتنقل اسم التمرين وبياناته للنموذج. راجع الوزن المقترح واختار وزن مناسب ليك، وبعدها احفظ التمرين.';
- });
-})();
-</script>
-
 </body>
 </html>
