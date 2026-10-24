@@ -30,6 +30,11 @@ input,select{width:100%;padding:13px;background:#090b09;color:white;border:1px s
 .session-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.session-status{padding:15px;border:1px solid #38432d;border-radius:12px;background:#090b09;margin-top:15px}.session-status strong{color:var(--lime)}.session-list{margin-top:12px}.session-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.session-summary .stat strong{font-size:22px}.timer-box{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;background:#090b09;border:1px solid #38432d;border-radius:13px;padding:15px;margin-top:15px}.timer-time{font-size:30px;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums}
 footer{margin-top:35px;padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:700px){.session-summary{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr;padding-top:38px}.hero-card{min-height:190px}.big-number{font-size:58px}.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.navlinks{gap:10px;font-size:11px}h1{letter-spacing:-2px}.section-title{align-items:start;flex-direction:column}.search-row{grid-template-columns:1fr}.history-item{align-items:flex-start}.item-actions{flex-direction:column}.panel{padding:16px}}
+
+.ai-coach{border:1px solid #3a4b2b;background:linear-gradient(145deg,#151d12,#101210);border-radius:18px;padding:20px}
+.ai-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}.ai-avatar{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#b7ff38;color:#090b09;font-size:23px;font-weight:1000;flex-shrink:0}.ai-bubble{padding:12px 14px;border:1px solid var(--line);border-radius:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}.ai-message{display:flex;margin:10px 0}.ai-message.user{justify-content:flex-start}.ai-message.user .ai-bubble{background:#1c2914;border-color:#3d5228}.ai-message.bot{justify-content:flex-end}.ai-message.bot .ai-bubble{background:#0b0d0b}.ai-chat{max-height:380px;overflow:auto;padding:5px 0;margin:12px 0}.ai-input-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.ai-input-row textarea{width:100%;resize:vertical;min-height:48px;max-height:130px;padding:12px;background:#090b09;color:#fff;border:1px solid #343a32;border-radius:10px;font:inherit}.ai-quick{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.ai-quick button{font-size:12px}.ai-plan{border:1px solid #34442a;border-radius:12px;padding:12px;margin-top:10px;background:#0b0e0a}.ai-plan-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.ai-status{font-size:12px;color:var(--muted);margin-top:8px;min-height:18px}.ai-disclaimer{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
+@media(max-width:600px){.ai-coach{padding:15px}.ai-input-row{grid-template-columns:1fr}.ai-input-row button{width:100%}}
+
 </style>
 </head>
 <body>
@@ -39,6 +44,24 @@ footer{margin-top:35px;padding:28px 0;border-top:1px solid var(--line);color:var
 <div class="hero-card"><div class="kicker">BUILT BY DISCIPLINE</div><div class="big-number" id="heroSessions">00</div><strong>TRAINING SESSIONS</strong><p class="small">كل جلسة بتتحسب. استمر.</p></div></section>
 <section class="section"><div class="section-title"><div><div class="kicker">YOUR TOOLKIT</div><h2>كل حاجة في مكان واحد<span class="lime">.</span></h2></div></div><div class="grid">
 <div class="card"><div class="card-icon">🏋️</div><h3>سجّل كل مجموعة</h3><p class="muted">تابع المجموعات المكتملة لكل تمرين.</p></div><div class="card"><div class="card-icon">📈</div><h3>تابع تقدمك</h3><p class="muted">ارجع لأوزانك السابقة وقارن أداءك.</p></div><div class="card"><div class="card-icon">⏱️</div><h3>نظّم الراحة</h3><p class="muted">مؤقت راحة بسيط بين المجموعات.</p></div></div></section>
+
+<section class="section" id="ai-coach">
+ <div class="ai-coach">
+  <div class="ai-head"><div class="ai-avatar">G</div><div><div class="kicker">GYMATE AI COACH</div><h2 style="margin:5px 0">مدربك معاك<span class="lime">.</span></h2><div class="muted">اسأله عن تمرين النهارده، وهو هيمشي معاك خطوة بخطوة.</div></div></div>
+  <div class="ai-quick" aria-label="اختيارات سريعة">
+   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن صدر النهارده">صدر</button>
+   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن ضهر النهارده">ضهر</button>
+   <button class="btn secondary" type="button" data-ai-quick="عايز أتمرن رجل النهارده">رجل</button>
+   <button class="btn secondary" type="button" data-ai-quick="اقترح عليا تمرينة مناسبة النهارده حسب سجلي">اختارلي تمرينة</button>
+  </div>
+  <div class="ai-chat" id="aiChat" aria-live="polite"><div class="ai-message bot"><div class="ai-bubble">أهلاً بيك في GYMATE! 💪<br>هتمرّن إيه النهارده؟ قولّي هدفك والوقت المتاح، أو اختار عضلة من فوق. هسألك لو محتاج تفاصيل قبل ما أقترح الخطة.</div></div></div>
+  <div class="ai-input-row"><textarea id="aiInput" maxlength="1500" rows="2" placeholder="مثلاً: عايز صدر وتراي، عندي 45 دقيقة..."></textarea><button class="btn primary" id="aiSend" type="button">ابعت للمدرب ↗</button></div>
+  <div class="ai-status" id="aiStatus">المدرب محتاج اتصال بالإنترنت عشان يرد.</div>
+  <div id="aiPlan"></div>
+  <p class="ai-disclaimer">إرشاد عام للياقة وليس تشخيصًا طبيًا. ما تدخلش بيانات شخصية حساسة. لو فيه ألم أو دوخة أو إصابة، وقف التمرين واطلب مساعدة مختص.</p>
+ </div>
+</section>
+
 <section class="section" id="sessions"><div class="panel"><div class="kicker">WORKOUT MODE</div><h2>جلسة تمرينك<span class="lime">.</span></h2><p class="muted">ابدأ جلسة، وسجّل تمارينك المعتادة أثناءها. هنربط كل تمرين بالجلسة ونحسب حجم التدريب والمجموعات المكتملة.</p><div class="session-actions"><button class="btn primary" id="startSession" type="button">▶ ابدأ تمرينة جديدة</button><button class="btn danger" id="finishSession" type="button" hidden>إنهاء التمرينة</button></div><div class="session-status" id="sessionStatus">مفيش جلسة تمرين شغالة حاليًا.</div><div class="session-summary" id="sessionSummary" hidden></div><div class="session-list" id="sessionHistory"><p class="empty">الجلسات اللي هتخلصها هتظهر هنا.</p></div></div></section>
 <section class="section split" id="workout"><div class="panel"><div class="kicker">01 / TRAINING LOG</div><h2 id="formHeading">سجّل تمرينك<span class="lime">.</span></h2><p class="muted">اكتب بيانات التمرين، وبعد الحفظ علّم المجموعات اللي خلصتها.</p>
 <form id="workoutForm"><label for="exercise">اسم التمرين</label><input id="exercise" type="text" placeholder="مثلاً Bench Press" maxlength="60" required>
@@ -144,5 +167,60 @@ $('timerReset').addEventListener('click',()=>{clearInterval(timerInterval);timer
 render();
 })();
 </script>
+
+<script>
+(function(){
+ 'use strict';
+ // Set this to the deployed Cloudflare Worker URL. Never put the Gemini API key here.
+ const AI_ENDPOINT = 'PASTE_CLOUDFLARE_WORKER_URL_HERE';
+ const byId=id=>document.getElementById(id);
+ const chat=byId('aiChat'), input=byId('aiInput'), send=byId('aiSend'), status=byId('aiStatus'), planBox=byId('aiPlan');
+ if(!chat||!input||!send)return;
+ let messages=[]; let lastPlan=[];
+ function addMessage(role,text){
+  const row=document.createElement('div');row.className='ai-message '+(role==='user'?'user':'bot');
+  const bubble=document.createElement('div');bubble.className='ai-bubble';bubble.textContent=text;row.appendChild(bubble);chat.appendChild(row);chat.scrollTop=chat.scrollHeight;
+ }
+ function getContext(){
+  try{const d=JSON.parse(localStorage.getItem('gymate-complete-v1'))||{};const ex=Array.isArray(d.exercises)?d.exercises:[];const sessions=Array.isArray(d.sessions)?d.sessions:[];
+   return {recentExercises:ex.slice(-12).map(x=>({name:x.name,weight:x.weight,reps:x.reps,sets:x.sets,completedSets:Array.isArray(x.doneSets)?x.doneSets.length:0,date:x.date,sessionId:x.sessionId||null})),recentSessions:sessions.slice(-6).map(s=>({date:s.date,startedAt:s.startedAt,endedAt:s.endedAt})),activeSessionId:d.activeSessionId||null};
+  }catch(e){return {recentExercises:[],recentSessions:[],activeSessionId:null};}
+ }
+ function renderPlan(plan){
+  lastPlan=Array.isArray(plan)?plan.filter(x=>x&&typeof x.name==='string').slice(0,10):[];
+  if(!lastPlan.length){planBox.innerHTML='';return;}
+  planBox.innerHTML='<div class="kicker" style="margin-top:16px">خطة مقترحة — راجعها قبل التطبيق</div>'+lastPlan.map((x,i)=>`<div class="ai-plan"><div class="ai-plan-row"><div><strong>${escapeHtml(x.name)}</strong><div class="small">${Math.max(1,Math.min(10,Number(x.sets)||3))} مجموعات × ${Math.max(1,Math.min(30,Number(x.reps)||10))} تكرار · راحة ${Math.max(30,Math.min(300,Number(x.restSeconds)||90))} ثانية</div>${x.note?`<div class="small">${escapeHtml(x.note)}</div>`:''}</div><button type="button" class="btn secondary" data-ai-add="${i}">أضف للتمرين</button></div></div>`).join('');
+ }
+ function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ async function sendMessage(text){
+  text=(text||'').trim();if(!text)return;
+  if(AI_ENDPOINT.includes('PASTE_CLOUDFLARE')){status.textContent='لسه محتاجين ننشر خدمة المدرب ونحط رابطها هنا.';addMessage('bot','الواجهة جاهزة، لكن المدرب مش متوصل لسه. لازم نجهّز Cloudflare Worker ونحط رابطه في إعداد AI_ENDPOINT.');return;}
+  if(messages.length>=16)messages=messages.slice(-12);
+  addMessage('user',text);messages.push({role:'user',content:text});input.value='';send.disabled=true;status.textContent='المدرب بيفكر...';planBox.innerHTML='';
+  try{
+   const res=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:messages.slice(-12),context:getContext()})});
+   const payload=await res.json().catch(()=>({}));
+   if(!res.ok)throw new Error(payload.error||`حصل خطأ (${res.status})`);
+   const reply=String(payload.message||'مش قادر أطلع رد دلوقتي. جرّب تاني.');addMessage('bot',reply);messages.push({role:'assistant',content:reply});renderPlan(payload.plan);status.textContent='متصل بالمدرب الذكي';
+  }catch(err){status.textContent='تعذّر الاتصال بالمدرب';addMessage('bot','مش قادر أوصل للمدرب دلوقتي. '+(err.message||'راجع اتصال الإنترنت وإعدادات الخدمة.'));}
+  finally{send.disabled=false;input.focus();}
+ }
+ send.addEventListener('click',()=>sendMessage(input.value));
+ input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(input.value);}});
+ document.querySelectorAll('[data-ai-quick]').forEach(b=>b.addEventListener('click',()=>sendMessage(b.dataset.aiQuick)));
+ planBox.addEventListener('click',e=>{
+  const b=e.target.closest('[data-ai-add]');if(!b)return;const x=lastPlan[Number(b.dataset.aiAdd)];if(!x)return;
+  const start=byId('startSession');if(start&&!start.hidden)start.click();
+  byId('exercise').value=x.name;
+  byId('liftWeight').value=Number(x.weight)||0;
+  byId('reps').value=Math.max(1,Math.min(200,Number(x.reps)||10));
+  byId('sets').value=Math.max(1,Math.min(30,Number(x.sets)||3));
+  byId('workout').scrollIntoView({behavior:'smooth'});
+  byId('exercise').focus();
+  status.textContent='اتنقل اسم التمرين وبياناته للنموذج. راجع الوزن المقترح واختار وزن مناسب ليك، وبعدها احفظ التمرين.';
+ });
+})();
+</script>
+
 </body>
 </html>
